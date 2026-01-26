@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | SecureAttic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --blue-primary: #0052FF;
+            --text-main: #0F172A;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            background-color: #FFFFFF;
+        }
+
+        .nav-blur {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .doc-section {
+            scroll-margin-top: 100px;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: #F1F5F9;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: #0052FF;
+        }
+
+        .toc-link.active {
+            color: var(--blue-primary);
+            border-left: 2px solid var(--blue-primary);
+            padding-left: 14px;
+        }
+
+        .toc-link {
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+            padding-left: 16px;
+        }
+
+        pre {
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-slate-100 py-4">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <span class="text-xl font-extrabold tracking-tight text-[#0052FF] italic uppercase">SecureAttic</span>
+            </a>
+            <div class="flex items-center gap-8">
+                <a href="index.html"
+                    class="text-[10px] font-extrabold uppercase tracking-widest text-slate-500 hover:text-[#0052FF] transition-colors">Home</a>
+                <a href="contact.html"
+                    class="text-[10px] font-extrabold uppercase tracking-widest text-slate-500 hover:text-[#0052FF] transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-6 pt-32 pb-20 flex flex-col lg:flex-row gap-16">
+
+        <!-- Sidebar Navigation -->
+        <aside class="lg:w-72 flex-shrink-0">
+            <div class="sticky top-32 space-y-10">
+                <div>
+                    <h4 class="text-[10px] font-extrabold text-slate-900 uppercase tracking-widest mb-6">Foundations
+                    </h4>
+                    <ul class="space-y-4 text-sm font-bold text-slate-500">
+                        <li><a href="#introduction" class="toc-link hover:text-blue-primary">Core Philosophy</a></li>
+                        <li><a href="#setup" class="toc-link hover:text-blue-primary">Installation & Setup</a></li>
+                        <li><a href="#architecture" class="toc-link hover:text-blue-primary">System Architecture</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[10px] font-extrabold text-slate-900 uppercase tracking-widest mb-6">Technical Specs
+                    </h4>
+                    <ul class="space-y-4 text-sm font-bold text-slate-500">
+                        <li><a href="#encryption" class="toc-link hover:text-blue-primary">Encryption Standards</a></li>
+                        <li><a href="#hardware-uid" class="toc-link hover:text-blue-primary">Hardware Fingerprinting</a>
+                        </li>
+                        <li><a href="#runtime" class="toc-link hover:text-blue-primary">Runtime Security</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[10px] font-extrabold text-slate-900 uppercase tracking-widest mb-6">Maintenance
+                    </h4>
+                    <ul class="space-y-4 text-sm font-bold text-slate-500">
+                        <li><a href="#troubleshooting" class="toc-link hover:text-blue-primary">Troubleshooting</a></li>
+                        <li><a href="#faq" class="toc-link hover:text-blue-primary">Extended FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 max-w-3xl">
+            <header class="mb-16">
+                <div class="flex items-center gap-2 mb-4">
+                    <span
+                        class="px-2 py-1 bg-blue-50 text-[10px] font-black text-blue-600 rounded uppercase tracking-tighter">v2.4.0-Stable</span>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Updated Jan 2026</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-extrabold tracking-tighter text-slate-900 mb-6 italic uppercase">
+                    Technical <span class="text-[#0052FF]">Manual</span>
+                </h1>
+                <p class="text-xl text-slate-500 font-medium leading-relaxed">
+                    A deep dive into the SecureAttic environment—from initial hardware binding to the low-level
+                    cryptographic primitives that protect your data.
+                </p>
+            </header>
+
+            <!-- SECTION: Introduction -->
+            <section id="introduction" class="doc-section mb-24">
+                <h2 class="text-3xl font-bold text-slate-900 mb-8 tracking-tight">Core Philosophy</h2>
+                <div class="prose prose-slate leading-relaxed text-slate-600 font-medium space-y-6">
+                    <p>
+                        SecureAttic was developed to solve the "Master Password" dilemma. In traditional encryption,
+                        your security is only as strong as your ability to remember a complex string. However, passwords
+                        can be brute-forced, keylogged, or socially engineered.
+                    </p>
+                    <div class="p-6 bg-slate-900 rounded-2xl text-white italic border-l-4 border-blue-600">
+                        "If the key doesn't exist in the digital world, it cannot be stolen by a digital thief."
+                    </div>
+                    <p>
+                        By offloading the entropy of your encryption key to a <strong>physical hardware device</strong>,
+                        we create a multi-factor environment where unauthorized access requires physical theft of your
+                        hardware, not just a breach of your OS.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION: Architecture -->
+            <section id="architecture" class="doc-section mb-24">
+                <h2 class="text-3xl font-bold text-slate-900 mb-8 tracking-tight">System Architecture</h2>
+                <p class="text-slate-600 font-medium mb-8 leading-relaxed">
+                    The SecureAttic engine operates at the user-mode level but interfaces with the
+                    <code>Windows.Devices.Enumeration</code> and <code>WMI</code> (Windows Management Instrumentation)
+                    namespaces to pull unique controller data.
+                </p>
+
+                <div class="space-y-8">
+                    <div class="flex gap-6">
+                        <div
+                            class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 shrink-0">
+                            <i data-lucide="layers" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-extrabold text-slate-900 mb-2 uppercase text-xs tracking-widest">The "Vault"
+                                Layer</h4>
+                            <p class="text-sm text-slate-500">Virtual disk mapping that only appears when the Hardware
+                                UID is verified. This uses a proprietary file-system filter driver to intercept I/O
+                                requests.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-6">
+                        <div
+                            class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 shrink-0">
+                            <i data-lucide="cpu" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-extrabold text-slate-900 mb-2 uppercase text-xs tracking-widest">Hardware
+                                Abstraction</h4>
+                            <p class="text-sm text-slate-500">Direct query to the USB Mass Storage Class (MSC)
+                                descriptors. We pull the <code>iSerialNumber</code> and <code>bVndId</code> directly
+                                from the device firmware.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: Encryption -->
+            <section id="encryption" class="doc-section mb-24">
+                <h2 class="text-3xl font-bold text-slate-900 mb-8 tracking-tight">Encryption Standards</h2>
+                <p class="text-slate-600 font-medium mb-6">
+                    Every file within your Attic is encrypted individually using a unique 96-bit nonce. We utilize
+                    <strong>AES-256-GCM</strong> to ensure that if a single bit of encrypted data is modified, the
+                    system will detect it and prevent decryption to protect against bit-rot or malicious injection.
+                </p>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 mb-8">
+                    <h5 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Key Derivation
+                        Function (KDF)</h5>
+                    <ul class="space-y-3 text-sm font-bold text-slate-700">
+                        <li class="flex justify-between border-b border-slate-100 pb-2">
+                            <span>Algorithm</span>
+                            <span class="mono text-blue-600">PBKDF2-HMAC-SHA512</span>
+                        </li>
+                        <li class="flex justify-between border-b border-slate-100 pb-2">
+                            <span>Iterations</span>
+                            <span class="mono text-blue-600">250,000</span>
+                        </li>
+                        <li class="flex justify-between border-b border-slate-100 pb-2">
+                            <span>Salt Length</span>
+                            <span class="mono text-blue-600">32 Bytes (Randomized)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-900 rounded-2xl p-8">
+                    <div class="flex justify-between items-center mb-4">
+                        <span
+                            class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mono">security_protocol.v2</span>
+                        <div class="flex gap-1.5">
+                            <div class="w-2 h-2 rounded-full bg-red-500/20"></div>
+                            <div class="w-2 h-2 rounded-full bg-yellow-500/20"></div>
+                            <div class="w-2 h-2 rounded-full bg-green-500/50"></div>
+                        </div>
+                    </div>
+                    <pre class="text-blue-400 mono text-xs leading-loose">
+// Step 1: Extract Device Descriptor
+const deviceID = hardwareBus.getSerial("USB_PORT_0");
+
+// Step 2: Mix with User Entropy
+const seed = hash(deviceID + user_local_salt);
+
+// Step 3: Derive Master Key (in volatile RAM)
+const masterKey = argon2.derive(seed, {
+    memory: 65536,
+    time: 4,
+    threads: 2
+});
+
+// Step 4: Clear intermediate buffers
+scrub(seed);
+                    </pre>
+                </div>
+            </section>
+
+            <!-- SECTION: Troubleshooting -->
+            <section id="troubleshooting" class="doc-section mb-24">
+                <h2 class="text-3xl font-bold text-slate-900 mb-8 tracking-tight">Troubleshooting</h2>
+                <div class="space-y-4">
+                    <details class="group border border-slate-200 rounded-2xl">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-slate-900">Device Not Recognized</span>
+                            <i data-lucide="chevron-down"
+                                class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-slate-500 font-medium">
+                            Ensure the USB drive is using the <strong>GPT</strong> partition style. Some older MBR
+                            drives may not report their Serial Number correctly to the Windows API. Try a different USB
+                            port, preferably directly on the motherboard rather than a hub.
+                        </div>
+                    </details>
+
+                    <details class="group border border-slate-200 rounded-2xl">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-slate-900">"Attic in Use" Error</span>
+                            <i data-lucide="chevron-down"
+                                class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-slate-500 font-medium">
+                            This usually happens if a file inside the Attic is still open in another application (like
+                            Word or Photoshop). Close all associated apps before attempting to lock the Attic.
+                        </div>
+                    </details>
+
+                    <details class="group border border-slate-200 rounded-2xl">
+                        <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                            <span class="font-bold text-slate-900">Slow Decryption Speeds</span>
+                            <i data-lucide="chevron-down"
+                                class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <div class="px-6 pb-6 text-sm text-slate-500 font-medium">
+                            SecureAttic performs a health check on every file during decryption. If you have thousands
+                            of small files, this can take time. I recommend using the "Turbo Mode" in settings to skip
+                            non-critical integrity checks for large libraries.
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <!-- SECTION: FAQ -->
+            <section id="faq" class="doc-section mb-20">
+                <h2 class="text-3xl font-bold text-slate-900 mb-8 tracking-tight">Extended FAQ</h2>
+                <div class="grid gap-8">
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-2 uppercase text-[10px] tracking-widest text-blue-600">
+                            Does SecureAttic work on Mac/Linux?</h4>
+                        <p class="text-sm text-slate-500 font-medium">Not currently. The system relies on low-level
+                            Windows kernel calls for hardware binding. A Linux version is in the early research phase.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-2 uppercase text-[10px] tracking-widest text-blue-600">
+                            What if my USB drive breaks?</h4>
+                        <p class="text-sm text-slate-500 font-medium">If the drive fails physically, the hardware
+                            signature is lost. You MUST use your Recovery Seed (provided at setup) or your
+                            pre-registered Backup Key to regain access.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-2 uppercase text-[10px] tracking-widest text-blue-600">
+                            Are my files stored on the USB?</h4>
+                        <p class="text-sm text-slate-500 font-medium">No. Your files stay on your PC. The USB drive only
+                            acts as the "physical key" to unlock them.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-24 px-6 border-t border-slate-100 bg-white">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+            <div class="md:w-1/3">
+                <span
+                    class="text-2xl font-extrabold tracking-tight text-[#0052FF] italic uppercase block mb-2">SecureAttic</span>
+                <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest block mb-4">Independent
+                    Cryptography Project</span>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+                <div class="flex flex-col gap-4">
+                    <span class="text-[10px] font-extrabold text-slate-900 uppercase tracking-widest">Platform</span>
+                    <a href="index.html" class="text-xs font-bold text-slate-400 hover:text-blue-primary">Home</a>
+                    <a href="documentation.html" class="text-xs font-bold text-blue-600">Documentation</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <span class="text-[10px] font-extrabold text-slate-900 uppercase tracking-widest">Help</span>
+                    <a href="contact.html" class="text-xs font-bold text-slate-400 hover:text-blue-primary">Contact
+                        Me</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <span class="text-[10px] font-extrabold text-slate-900 uppercase tracking-widest">Legal</span>
+                    <a href="terms-of-service.html"
+                        class="text-xs font-bold text-slate-400 hover:text-blue-primary">Terms of
+                        Service</a>
+                    <a href="privacy-policy.html"
+                        class="text-xs font-bold text-slate-400 hover:text-blue-primary">Privacy
+                        Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Simple scroll spy for sidebar
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.doc-section');
+            const navLinks = document.querySelectorAll('.toc-link');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
