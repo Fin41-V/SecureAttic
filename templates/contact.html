@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | SecureAttic</title>
-    <link rel="icon" href="/logo.png" />
+    <link rel="icon" href="/static/logo.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link
@@ -50,20 +50,18 @@
 
 <body class="bg-slate-50">
 
-    <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 nav-blur border-b border-slate-100 py-4">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2">
+            <a href="/" class="flex items-center gap-2">
                 <span class="text-xl font-extrabold tracking-tight text-[#0052FF] italic uppercase">SecureAttic</span>
             </a>
-            <a href="index.html"
+            <a href="/"
                 class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-[#0052FF] transition-colors">
                 Back to Home
             </a>
         </div>
     </nav>
 
-    <!-- Header -->
     <header class="pt-32 pb-16 px-6 bg-white border-b border-slate-100">
         <div class="max-w-3xl mx-auto">
             <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter text-slate-900 mb-4 italic uppercase">
@@ -80,7 +78,6 @@
     <main class="py-20 px-6">
         <div class="max-w-5xl mx-auto grid md:grid-cols-5 gap-12">
 
-            <!-- Contact Info -->
             <div class="md:col-span-2 space-y-8">
                 <div>
                     <h4 class="text-[10px] font-extrabold text-[#0052FF] uppercase tracking-[0.2em] mb-6">Direct Line
@@ -117,7 +114,6 @@
                 </div>
             </div>
 
-            <!-- Contact Form -->
             <div class="md:col-span-3">
                 <div class="bg-white border border-slate-200 rounded-[2.5rem] p-8 md:p-12 shadow-sm">
                     <form action="https://formspree.io/f/noahjohncraigkerr@proton.me" method="POST" class="space-y-6">
@@ -171,7 +167,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="py-24 px-6 border-t border-slate-100 bg-white">
         <div
             class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 text-center md:text-left">
@@ -184,22 +179,20 @@
             <div class="grid grid-cols-2 md:grid-cols-3 gap-12">
                 <div class="flex flex-col gap-4">
                     <span class="text-[10px] font-extrabold text-slate-900 uppercase tracking-widest">Platform</span>
-                    <a href="index.html#how-it-works"
-                        class="text-xs font-bold text-slate-400 hover:text-blue-primary">How it works</a>
+                    <a href="/#how-it-works" class="text-xs font-bold text-slate-400 hover:text-blue-primary">How it
+                        works</a>
                 </div>
                 <div class="flex flex-col gap-4">
                     <span class="text-[10px] font-extrabold text-slate-900 uppercase tracking-widest">Help</span>
-                    <a href="contact.html" class="text-xs font-bold text-blue-600">Contact Me</a>
+                    <a href="/contact" class="text-xs font-bold text-blue-600">Contact Me</a>
                 </div>
                 <div class="flex flex-col gap-4">
                     <span class="text-[10px] font-extrabold text-slate-900 uppercase tracking-widest">Legal</span>
-                    <a href="terms-of-service.html"
-                        class="text-xs font-bold text-slate-400 hover:text-blue-primary">Terms of
-                        Service</a>
-                    <a href="privacy-policy.html"
-                        class="text-xs font-bold text-slate-400 hover:text-blue-primary">Privacy
+                    <a href="/terms-of-service" class="text-xs font-bold text-slate-400 hover:text-blue-primary">Terms
+                        of Service</a>
+                    <a href="/privacy-policy" class="text-xs font-bold text-slate-400 hover:text-blue-primary">Privacy
                         Policy</a>
-                    <a href="cookie-policy.html" class="text-xs font-bold text-slate-400 hover:text-blue-primary">Cookie
+                    <a href="/cookie-policy" class="text-xs font-bold text-slate-400 hover:text-blue-primary">Cookie
                         Policy</a>
                 </div>
             </div>

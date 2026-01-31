@@ -14,169 +14,230 @@
     <style>
         :root {
             --blue-primary: #0052FF;
+            --blue-deep: #00287A;
             --text-main: #0F172A;
         }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--text-main);
-            background-color: #FFFFFF;
+            background-color: #FAFCFF;
         }
 
         .legal-content h3 {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 800;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
+            margin-top: 3.5rem;
+            margin-bottom: 1.25rem;
             text-transform: uppercase;
             font-style: italic;
-            letter-spacing: -0.025em;
+            letter-spacing: 0.05em;
             color: #0F172A;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .legal-content h3::before {
+            content: '';
+            width: 12px;
+            height: 2px;
+            background: var(--blue-primary);
+            display: inline-block;
         }
 
         .legal-content p,
         .legal-content li {
-            color: #64748B;
-            line-height: 1.75;
+            color: #475569;
+            line-height: 1.8;
             font-size: 0.95rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .legal-content strong {
+            color: #1E293B;
+            font-weight: 700;
         }
 
         .legal-content ul {
+            padding-left: 1.25rem;
+            list-style-type: none;
+        }
+
+        .legal-content ul li {
+            position: relative;
             padding-left: 1.5rem;
-            list-style-type: disc;
+        }
+
+        .legal-content ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--blue-primary);
+            font-weight: 800;
         }
 
         .nav-blur {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+
+        .hero-mesh {
+            background-color: #ffffff;
+            background-image: radial-gradient(at 0% 0%, rgba(0, 82, 255, 0.03) 0, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(0, 82, 255, 0.03) 0, transparent 50%);
         }
     </style>
 </head>
 
-<body class="bg-slate-50">
+<body class="hero-mesh">
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-slate-100 py-4">
+    <nav class="fixed top-0 w-full z-50 nav-blur border-b border-slate-100 py-5">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-2">
                 <span class="text-xl font-extrabold tracking-tight text-[#0052FF] italic uppercase">SecureAttic</span>
             </a>
-            <a href="index.html"
-                class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-[#0052FF] transition-colors">
-                Back to Home
-            </a>
+            <div class="flex items-center gap-8">
+                <a href="index.html"
+                    class="text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-[#0052FF] transition-all flex items-center gap-2">
+                    <i data-lucide="arrow-left" class="w-3 h-3"></i>
+                    Back to Terminal
+                </a>
+            </div>
         </div>
     </nav>
 
-    <!-- Header Section -->
-    <header class="pt-32 pb-16 px-6 bg-white border-b border-slate-100">
-        <div class="max-w-3xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter text-slate-900 mb-4 italic uppercase">
-                Terms of <span class="text-[#0052FF]">Service</span>
+    <header class="pt-40 pb-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-100 rounded-lg mb-6">
+                <i data-lucide="scale" class="w-3 h-3 text-[#0052FF]"></i>
+                <span class="text-[10px] font-extrabold uppercase tracking-widest text-[#0052FF]">Legal
+                    Documentation</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-slate-900 mb-6 italic uppercase">
+                Terms of <span class="text-[#0052FF]">Service.</span>
             </h1>
-            <div class="flex flex-wrap gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
-                <span>Effective Date: Jan 25, 2026</span>
-                <span class="hidden md:block">•</span>
-                <span>Last Updated: Jan 25, 2026</span>
+            <div
+                class="flex flex-wrap gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 border-t border-slate-100 pt-6">
+                <span class="flex items-center gap-2"><i data-lucide="calendar" class="w-3 h-3"></i> Effective: Jan 25,
+                    2026</span>
+                <span class="flex items-center gap-2"><i data-lucide="refresh-cw" class="w-3 h-3"></i> Revision:
+                    2.0.4</span>
             </div>
         </div>
     </header>
 
-    <!-- Content Section -->
-    <main class="py-20 px-6">
-        <article
-            class="max-w-3xl mx-auto bg-white border border-slate-200 rounded-[2.5rem] p-8 md:p-16 shadow-sm legal-content">
+    <main class="pb-32 px-6">
+        <div class="max-w-4xl mx-auto">
+            <article
+                class="bg-white border border-slate-200 rounded-[3rem] p-8 md:p-20 shadow-xl shadow-blue-900/5 legal-content relative overflow-hidden">
 
-            <p>Welcome to SecureAttic. These Terms of Service ("Terms") govern your use of the SecureAttic software,
-                website, and services (collectively, the "Service").</p>
+                <div class="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
+                    <i data-lucide="file-text" class="w-64 h-64 text-slate-900"></i>
+                </div>
 
-            <div class="p-6 bg-blue-50 border border-blue-100 rounded-2xl mb-8">
-                <p class="text-blue-900 font-bold mb-0">Important: Agreement by Use</p>
-                <p class="text-blue-800 text-sm mb-0">By downloading, installing, or using the SecureAttic application,
-                    you automatically agree to be bound by these Terms of Service, our <a href="privacy-policy.html"
-                        class="underline">Privacy Policy</a>, and our <a href="cookie-policy.html"
-                        class="underline">Cookie
-                        Policy</a>. If you do not agree, do not download or use the software.</p>
-            </div>
+                <p class="text-lg text-slate-600 mb-12 leading-relaxed">
+                    Welcome to SecureAttic. These Terms of Service ("Terms") govern your use of the SecureAttic
+                    software, website, and hardware-locking services. By engaging with our systems, you enter into a
+                    binding agreement with SecureAttic Systems.
+                </p>
 
-            <h3>1. The Service</h3>
-            <p>SecureAttic provides hardware-locked data protection software for Windows. The Service functions by
-                binding local directories to physical hardware identifiers (USB keys).</p>
+                <div class="p-8 bg-slate-900 rounded-[2rem] mb-12 shadow-2xl relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-3xl group-hover:bg-blue-500/20 transition-all">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="alert-octagon" class="w-5 h-5 text-blue-400"></i>
+                            <h4 class="text-white text-xs font-extrabold uppercase tracking-widest">Mandatory Agreement
+                            </h4>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-0 leading-relaxed">
+                            By downloading, installing, or activating a license for SecureAttic, you automatically agree
+                            to be bound by these Terms, our <a href="privacy-policy.html"
+                                class="text-blue-400 hover:text-white underline decoration-blue-400/30 underline-offset-4 transition-all">Privacy
+                                Policy</a>, and our <a href="cookie-policy.html"
+                                class="text-blue-400 hover:text-white underline decoration-blue-400/30 underline-offset-4 transition-all">Cookie
+                                Policy</a>. If you do not agree to these protocols, do not initialize the software.
+                        </p>
+                    </div>
+                </div>
 
-            <h3>2. Licensing & SaaS Model</h3>
-            <ul>
-                <li><strong>License Grant:</strong> Subject to these Terms and payment of the applicable fee,
-                    SecureAttic grants you a non-exclusive, non-transferable, revocable license to use the software for
-                    personal or professional use.</li>
-                <li><strong>Subscription:</strong> SecureAttic operates as a Software-as-a-Service (SaaS). Access to the
-                    "Sentry" monitoring and vault features requires an active, paid subscription.</li>
-                <li><strong>Local File Integrity:</strong> Your license key and application data are stored locally
-                    within the SecureAttic installation/download folder. You are responsible for monitoring and
-                    protecting this folder. If these files are deleted, modified, or corrupted by you or a third party,
-                    your license may be rendered void or inaccessible. <strong>SecureAttic is not liable for the loss of
-                        license keys due to local file deletion, and you may be required to purchase a new license to
-                        regain access.</strong></li>
-                <li><strong>Hardware Limits:</strong> Standard licenses are limited to activation on one (1) primary
-                    machine and support up to three (3) authorized hardware keys.</li>
-            </ul>
+                <h3>1. The Service Scope</h3>
+                <p>SecureAttic provides hardware-locked data protection software for Windows environments. The Service
+                    functions by cryptographically binding local directories to physical hardware identifiers (USB
+                    keys/Security Tokens) through a proprietary kernel-level monitoring system.</p>
 
-            <h3>3. Data Privacy & Responsibility</h3>
-            <ul>
-                <li><strong>Local-First Architecture:</strong> SecureAttic is designed so that your encrypted data never
-                    leaves your local machine. We do not have access to your files, your encryption keys, or your
-                    physical hardware hashes.</li>
-                <li><strong>No Recovery Service:</strong> Because we do not store your encryption keys,
-                    <strong>SecureAttic cannot recover your data if you lose all authorized hardware keys and your
-                        emergency recovery codes.</strong> You acknowledge that loss of hardware keys may result in
-                    permanent data loss.
-                </li>
-                <li><strong>User Responsibility:</strong> You are solely responsible for maintaining backups of your
-                    data and securing your physical hardware keys.</li>
-            </ul>
+                <h3>2. Licensing & SaaS Model</h3>
+                <ul>
+                    <li><strong>License Grant:</strong> We grant you a non-exclusive, non-transferable, revocable
+                        license to utilize the SecureAttic binary for personal or professional data hardening.</li>
+                    <li><strong>Subscription Protocol:</strong> SecureAttic operates as a Software-as-a-Service (SaaS).
+                        Continuous access to the "Sentry" active monitoring and automated vault features requires an
+                        active, paid license.</li>
+                    <li><strong>Local File Integrity:</strong> Your license key and application state are stored
+                        locally. <strong>SecureAttic is not liable for license loss due to manual deletion of
+                            application files.</strong> You are responsible for maintaining the directory integrity of
+                        your installation.</li>
+                    <li><strong>Hardware Limits:</strong> Standard licenses are hard-locked to one (1) primary
+                        workstation and support a maximum of three (3) authorized hardware keys.</li>
+                </ul>
 
-            <h3>4. Prohibited Uses</h3>
-            <p>You agree not to:</p>
-            <ul>
-                <li>Decompile, reverse engineer, or attempt to derive the source code of the SecureAttic kernel.</li>
-                <li>Circumvent or bypass any license validation or hardware-locking mechanisms.</li>
-                <li>Use the Service for any illegal activities, including the storage of illicit materials prohibited by
-                    local laws in your jurisdiction.</li>
-            </ul>
+                <h3>3. Data Sovereignty & Recovery</h3>
+                <ul>
+                    <li><strong>Local-First Architecture:</strong> Your encrypted data never leaves your physical
+                        machine. We do not transmit, mirror, or possess access to your files, encryption keys, or
+                        hardware hashes.</li>
+                    <li><strong>Zero-Recovery Policy:</strong> Because we prioritize absolute privacy,
+                        <strong>SecureAttic cannot recover your data if you lose your authorized hardware keys and
+                            recovery codes.</strong> Hardware loss equals permanent data loss.</li>
+                    <li><strong>Redundancy:</strong> Users are solely responsible for maintaining secondary backups of
+                        sensitive data outside of the SecureAttic vault environment.</li>
+                </ul>
 
-            <h3>5. Intellectual Property</h3>
-            <p>All rights, title, and interest in and to the Service (excluding your local data) are and will remain the
-                exclusive property of SecureAttic Systems. The software is protected by copyright, trademark, and other
-                laws of both the United Kingdom and your country of residence.</p>
+                <h3>4. Operational Restrictions</h3>
+                <p>To maintain the integrity of the SecureAttic network, you strictly agree not to:</p>
+                <ul>
+                    <li>Attempt to decompile, reverse engineer, or "crack" the SecureAttic kernel driver.</li>
+                    <li>Bypass or spoof hardware-locking mechanisms via virtual machine environments or software
+                        emulators.</li>
+                    <li>Utilize SecureAttic for the storage or distribution of materials prohibited by United Kingdom or
+                        International law.</li>
+                </ul>
 
-            <h3>6. Disclaimer of Warranties</h3>
-            <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE." SECUREATTIC MAKES NO WARRANTIES, EXPRESSED OR
-                IMPLIED, REGARDING THE SECURITY OF DATA AGAINST ALL POSSIBLE VULNERABILITIES OR THE CONSTANT
-                AVAILABILITY OF THE SERVICE IN THE EVENT OF OS-LEVEL UPDATES.</p>
+                <h3>5. Intellectual Property</h3>
+                <p>All source code, UI designs, brand assets, and proprietary encryption methodologies are the exclusive
+                    property of SecureAttic Systems. Unauthorized distribution of the SecureAttic binary outside of
+                    official channels is a violation of international copyright law.</p>
 
-            <h3>7. Limitation of Liability</h3>
-            <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, SECUREATTIC SYSTEMS SHALL NOT BE LIABLE FOR ANY INDIRECT,
-                INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF DATA, RESULTING FROM YOUR USE OF
-                OR INABILITY TO USE THE SERVICE.</p>
+                <h3>6. Limitation of Liability</h3>
+                <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, SECUREATTIC SYSTEMS SHALL NOT BE LIABLE FOR ANY DATA LOSS,
+                    HARDWARE DAMAGE, OR FINANCIAL LOSS RESULTING FROM THE USE OR MISUSE OF OUR HARDWARE-LOCKING
+                    TECHNOLOGY. YOU ASSUME ALL RISK ASSOCIATED WITH LOCAL ENCRYPTION.</p>
 
-            <h3>8. Termination</h3>
-            <p>We may terminate or suspend your license immediately, without prior notice or liability, if you breach
-                these Terms. Upon termination, your right to use the Service will cease, and the Sentry protocol may
-                revert your vault to its locked state.</p>
-
-            <h3>9. Governing Law</h3>
-            <p>These Terms shall be governed and construed in accordance with the laws of the jurisdiction in which the
-                user resides at the time of purchase, without regard to its conflict of law provisions. Any legal action
-                or proceeding arising under these Terms will be brought exclusively in the courts located within that
-                jurisdiction.</p>
-
-            <h3>10. Contact Us</h3>
-            <p>For questions regarding these Terms, please contact <a href="mailto:legal@secureattic.com"
-                    class="text-[#0052FF] font-bold hover:underline">legal@secureattic.com</a>.</p>
-        </article>
+                <div
+                    class="mt-16 pt-12 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center">
+                            <i data-lucide="help-circle" class="w-5 h-5 text-slate-400"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-1">
+                                Questions?</p>
+                            <a href="mailto:legal@secureattic.com"
+                                class="text-sm font-bold text-[#0052FF] hover:underline">legal@secureattic.com</a>
+                        </div>
+                    </div>
+                    <button onclick="window.print()"
+                        class="flex items-center gap-2 px-6 py-3 border border-slate-200 rounded-xl text-xs font-bold uppercase tracking-widest text-slate-500 hover:bg-slate-50 transition-all">
+                        <i data-lucide="printer" class="w-4 h-4"></i>
+                        Print Copy
+                    </button>
+                </div>
+            </article>
+        </div>
     </main>
 
-    <!-- Footer -->
     <footer class="py-24 px-6 border-t border-slate-100 bg-white">
         <div
             class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 text-center md:text-left">
@@ -186,26 +247,32 @@
                 <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest block mb-4">Advanced
                     Local Cryptography Systems</span>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-12">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-24">
                 <div class="flex flex-col gap-4">
                     <span class="text-[10px] font-extrabold text-slate-900 uppercase tracking-widest">Platform</span>
                     <a href="index.html#how-it-works"
-                        class="text-xs font-bold text-slate-400 hover:text-blue-primary">How it works</a>
+                        class="text-xs font-bold text-slate-400 hover:text-[#0052FF] transition-colors">How it works</a>
                 </div>
                 <div class="flex flex-col gap-4">
                     <span class="text-[10px] font-extrabold text-slate-900 uppercase tracking-widest">Support</span>
-                    <a href="#" class="text-xs font-bold text-slate-400 hover:text-blue-primary">Documentation</a>
+                    <a href="#"
+                        class="text-xs font-bold text-slate-400 hover:text-[#0052FF] transition-colors">Documentation</a>
                 </div>
                 <div class="flex flex-col gap-4">
                     <span class="text-[10px] font-extrabold text-slate-900 uppercase tracking-widest">Legal</span>
-                    <a href="terms-of-service.html" class="text-xs font-bold text-blue-600">Terms of Service</a>
+                    <a href="terms-of-service.html" class="text-xs font-bold text-[#0052FF]">Terms of Service</a>
                     <a href="privacy-policy.html"
-                        class="text-xs font-bold text-slate-400 hover:text-blue-primary">Privacy
+                        class="text-xs font-bold text-slate-400 hover:text-[#0052FF] transition-colors">Privacy
                         Policy</a>
-                    <a href="cookie-policy.html" class="text-xs font-bold text-slate-400 hover:text-blue-primary">Cookie
+                    <a href="cookie-policy.html"
+                        class="text-xs font-bold text-slate-400 hover:text-[#0052FF] transition-colors">Cookie
                         Policy</a>
                 </div>
             </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-slate-50 flex justify-center">
+            <div class="text-[10px] font-bold text-slate-300 uppercase tracking-widest italic">SecureAttic Systems —
+                London, UK — 2026</div>
         </div>
     </footer>
 
