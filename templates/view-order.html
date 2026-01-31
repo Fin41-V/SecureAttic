@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureAttic | Order Confirmation</title>
+    <link rel="icon" href="logo.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --blue-primary: #0052FF;
+            --blue-deep: #00287A;
+            --text-main: #0F172A;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            background-color: #FFFFFF;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .hero-gradient {
+            background: radial-gradient(60% 60% at 50% 0%, rgba(0, 82, 255, 0.04) 0%, transparent 100%);
+        }
+
+        .animate-fade {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="hero-gradient min-h-screen">
+
+    <nav class="w-full py-8">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="text-xl font-extrabold tracking-tight text-[#0052FF] italic uppercase">SecureAttic</span>
+            </div>
+            <img src="logo.png" alt="Logo" class="w-10 h-10 object-contain opacity-90"
+                onerror="this.src='https://placehold.co/40x40/0052FF/white?text=SA'">
+        </div>
+    </nav>
+
+    <section class="pt-20 pb-32 px-6 text-center">
+        <div class="max-w-3xl mx-auto animate-fade">
+
+            <div
+                class="inline-flex items-center gap-3 px-4 py-1.5 bg-blue-50/50 border border-blue-100 rounded-full mb-10">
+                <span class="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#0052FF]">Hardware
+                    Authorization Successful</span>
+            </div>
+
+            <h1 class="text-5xl md:text-6xl font-extrabold tracking-tighter text-slate-900 mb-6 leading-tight">
+                Your key is ready for the <span class="text-[#0052FF] italic">Attic.</span>
+            </h1>
+
+            <p class="text-lg text-slate-500 mb-12 max-w-lg mx-auto leading-relaxed font-medium">
+                Use the activation key below to bind your device. A permanent copy has also been sent to your email.
+            </p>
+
+            <div class="p-2 bg-slate-50 border border-slate-200 rounded-[2.5rem] shadow-sm text-left">
+                <div class="bg-white border border-slate-200 rounded-[2.2rem] overflow-hidden shadow-2xl">
+
+                    <div class="h-10 bg-slate-50 border-b border-slate-200 flex items-center px-6 gap-2">
+                        <div class="mx-auto text-[10px] font-bold text-slate-400 uppercase tracking-widest mono italic">
+                            LICENSING_SENTRY_v2_OUTPUT
+                        </div>
+                    </div>
+
+                    <div class="p-8 md:p-12">
+                        <div class="flex items-center justify-between mb-8">
+                            <div>
+                                <h4 class="text-xs font-extrabold uppercase tracking-widest text-slate-400 mb-1">Status
+                                </h4>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                                    <span class="text-sm font-bold text-slate-900 italic uppercase">Active &
+                                        Ready</span>
+                                </div>
+                            </div>
+                            <i data-lucide="shield-check" class="w-8 h-8 text-blue-600"></i>
+                        </div>
+
+                        <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6 relative group">
+                            <h4 class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4">Activation
+                                Key</h4>
+
+                            <div class="flex flex-col md:flex-row items-center gap-4">
+                                <code id="license-key"
+                                    class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-wider mono w-full">
+                                    {{ license_key or 'CHECKING_EMAIL...' }}
+                                </code>
+
+                                <button onclick="copyKey()" id="copy-btn"
+                                    class="bg-slate-900 hover:bg-black text-white px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2 shrink-0 shadow-lg active:scale-95">
+                                    <i data-lucide="copy" class="w-4 h-4" id="copy-icon"></i>
+                                    <span id="copy-text">Copy</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex items-start gap-3 p-4 border border-slate-50 rounded-xl">
+                                <i data-lucide="monitor" class="w-4 h-4 text-blue-500 mt-1"></i>
+                                <div>
+                                    <p class="text-[10px] font-bold text-slate-900 uppercase tracking-widest">Platform
+                                    </p>
+                                    <p class="text-xs text-slate-400 font-medium italic">Windows Hardware Only</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 p-4 border border-slate-50 rounded-xl">
+                                <i data-lucide="mail" class="w-4 h-4 text-blue-500 mt-1"></i>
+                                <div>
+                                    <p class="text-[10px] font-bold text-slate-900 uppercase tracking-widest">Backup</p>
+                                    <p class="text-xs text-slate-400 font-medium italic">Sent to your Inbox</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 flex flex-col items-center gap-6">
+                <a href="SecureAttic.exe" download
+                    class="bg-[#0052FF] hover:bg-[#00287A] text-white px-12 py-5 rounded-2xl text-base font-bold flex items-center gap-2 transition-all hover:-translate-y-1 shadow-xl shadow-blue-500/20">
+                    Download SecureAttic
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                </a>
+                <a href="/"
+                    class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] hover:text-[#0052FF] transition-colors">Return
+                    to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Copy Functionality
+        function copyKey() {
+            const keyText = document.getElementById('license-key').innerText;
+            navigator.clipboard.writeText(keyText).then(() => {
+                const btnText = document.getElementById('copy-text');
+                const btnIcon = document.getElementById('copy-icon');
+
+                btnText.innerText = "Copied!";
+                btnIcon.setAttribute('data-lucide', 'check');
+                lucide.createIcons();
+
+                setTimeout(() => {
+                    btnText.innerText = "Copy";
+                    btnIcon.setAttribute('data-lucide', 'copy');
+                    lucide.createIcons();
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>
