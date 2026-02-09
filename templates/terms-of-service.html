@@ -52,7 +52,6 @@
 
 <body class="antialiased selection:bg-brand-primary selection:text-white">
 
-    <!-- NAVIGATION (Matches Index) -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-6 nav-blur">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-3">
@@ -72,7 +71,6 @@
         </div>
     </nav>
 
-    <!-- HEADER -->
     <header class="pt-40 pb-20 px-6 bg-white">
         <div class="max-w-4xl mx-auto text-center">
             <div
@@ -86,19 +84,17 @@
 
             <div
                 class="flex flex-wrap justify-center gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mt-8">
-                <span class="flex items-center gap-2"><i data-lucide="calendar" class="w-3 h-3"></i> Effective: Feb 05,
+                <span class="flex items-center gap-2"><i data-lucide="calendar" class="w-3 h-3"></i> Effective: Oct 10,
                     2026</span>
                 <span class="flex items-center gap-2"><i data-lucide="refresh-cw"
-                        class="w-3 h-3 text-brand-primary"></i> Revision: 2.1.0</span>
+                        class="w-3 h-3 text-brand-primary"></i> Revision: 3.0.0-Titan</span>
             </div>
         </div>
     </header>
 
-    <!-- CONTENT -->
     <main class="pb-32 px-6">
         <div class="max-w-4xl mx-auto space-y-16">
 
-            <!-- Intro Text -->
             <div class="prose prose-slate max-w-none text-center">
                 <p class="text-slate-600 font-light leading-relaxed text-lg max-w-2xl mx-auto">
                     Welcome to SecureAttic. These Terms of Service ("Terms") govern your use of the SecureAttic
@@ -107,10 +103,8 @@
                 </p>
             </div>
 
-            <!-- Mandatory Agreement Alert -->
             <div
                 class="p-8 md:p-12 bg-slate-900 rounded-[2.5rem] shadow-2xl shadow-slate-900/20 relative overflow-hidden group">
-                <!-- Background Glow -->
                 <div
                     class="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 blur-3xl -mr-16 -mt-16 pointer-events-none group-hover:bg-brand-primary/20 transition-colors duration-500">
                 </div>
@@ -136,10 +130,8 @@
                 </div>
             </div>
 
-            <!-- Policy Points Grid -->
             <div class="grid gap-8">
 
-                <!-- Section 1 -->
                 <div
                     class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-brand-primary/20 transition-all hover:shadow-lg hover:shadow-brand-primary/5 group">
                     <div class="flex items-center gap-4 mb-4">
@@ -151,12 +143,11 @@
                     </div>
                     <p class="text-sm text-slate-600 font-light leading-relaxed pl-14">
                         SecureAttic provides hardware-locked data protection software for Windows environments. The
-                        Service functions by cryptographically binding local directories to physical hardware
-                        identifiers (USB keys/Security Tokens) through a proprietary active monitoring system.
+                        Service functions by binding local directories to unique physical hardware identifiers
+                        (Volume Serial Numbers) through a proprietary active monitoring sentry.
                     </p>
                 </div>
 
-                <!-- Section 2 -->
                 <div
                     class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-brand-primary/20 transition-all hover:shadow-lg hover:shadow-brand-primary/5 group">
                     <div class="flex items-center gap-4 mb-4">
@@ -183,20 +174,19 @@
                         <li class="text-sm text-slate-600 font-light leading-relaxed flex gap-3">
                             <span class="w-1.5 h-1.5 rounded-full bg-brand-primary mt-2 shrink-0"></span>
                             <span><strong class="text-slate-900 font-medium">Local File Integrity:</strong> Your license
-                                key and application state are stored locally. SecureAttic is not liable for license loss
-                                due to manual deletion of application files. You are responsible for maintaining the
-                                directory integrity of your installation.</span>
+                                key and application state are stored locally in the AppData directory. You are
+                                responsible
+                                for maintaining the integrity of your local file system.</span>
                         </li>
                         <li class="text-sm text-slate-600 font-light leading-relaxed flex gap-3">
                             <span class="w-1.5 h-1.5 rounded-full bg-brand-primary mt-2 shrink-0"></span>
-                            <span><strong class="text-slate-900 font-medium">Hardware Limits:</strong> Standard licenses
-                                are hard-locked to one (1) primary workstation and support a maximum of three (3)
-                                authorized hardware keys.</span>
+                            <span><strong class="text-slate-900 font-medium">Hardware Limits:</strong> The license
+                                allows for one (1) primary workstation and the binding of up to three (3) concurrent
+                                USB hardware devices.</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Section 3 -->
                 <div
                     class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-brand-primary/20 transition-all hover:shadow-lg hover:shadow-brand-primary/5 group">
                     <div class="flex items-center gap-4 mb-4">
@@ -215,21 +205,21 @@
                         </li>
                         <li class="text-sm text-slate-600 font-light leading-relaxed flex gap-3">
                             <span class="w-1.5 h-1.5 rounded-full bg-red-500 mt-2 shrink-0"></span>
-                            <span><strong class="text-slate-900 font-medium">Zero-Recovery Policy:</strong> Because we
-                                prioritize absolute privacy, the Developer cannot recover your data if you lose your
-                                authorized hardware keys and recovery codes. Hardware loss equals permanent data
-                                loss.</span>
+                            <span><strong class="text-slate-900 font-medium">Zero-Recovery Policy:</strong>
+                                If you lose your authorized hardware keys AND your recovery mnemonic phrase, your data
+                                is
+                                cryptographically irretrievable. The Developer cannot assist in recovery.</span>
                         </li>
                         <li class="text-sm text-slate-600 font-light leading-relaxed flex gap-3">
                             <span class="w-1.5 h-1.5 rounded-full bg-brand-primary mt-2 shrink-0"></span>
-                            <span><strong class="text-slate-900 font-medium">Redundancy:</strong> Users are solely
-                                responsible for maintaining secondary backups of sensitive data outside of the
-                                SecureAttic vault environment.</span>
+                            <span><strong class="text-slate-900 font-medium">Insomnia Mode:</strong> The software
+                                forcibly prevents system sleep states during operation to ensure atomic encryption
+                                integrity.
+                                You acknowledge this operational behavior.</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Section 4 -->
                 <div
                     class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-brand-primary/20 transition-all hover:shadow-lg hover:shadow-brand-primary/5 group">
                     <div class="flex items-center gap-4 mb-4">
@@ -258,10 +248,14 @@
                             <span>Utilize SecureAttic for the storage or distribution of materials prohibited by United
                                 Kingdom or International law.</span>
                         </li>
+                        <li class="text-sm text-slate-600 font-light leading-relaxed flex gap-3">
+                            <i data-lucide="x" class="w-4 h-4 text-red-400 mt-0.5 shrink-0"></i>
+                            <span>Use the "Duress Mode" feature for illegal deception of law enforcement officials.
+                                This feature is intended for personal safety and privacy only.</span>
+                        </li>
                     </ul>
                 </div>
 
-                <!-- Section 5 -->
                 <div
                     class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-brand-primary/20 transition-all hover:shadow-lg hover:shadow-brand-primary/5 group">
                     <div class="flex items-center gap-4 mb-4">
@@ -278,7 +272,6 @@
                     </p>
                 </div>
 
-                <!-- Section 6 -->
                 <div
                     class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-brand-primary/20 transition-all hover:shadow-lg hover:shadow-brand-primary/5 group">
                     <div class="flex items-center gap-4 mb-4">
@@ -297,7 +290,6 @@
 
             </div>
 
-            <!-- PDF Download Section -->
             <div class="mt-16 pt-12 border-t border-slate-100">
                 <div
                     class="flex flex-col md:flex-row justify-between items-center gap-8 bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
@@ -323,7 +315,6 @@
         </div>
     </main>
 
-    <!-- FOOTER (Matches Index) -->
     <footer class="py-12 px-6 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="flex flex-col items-center md:items-start gap-3">

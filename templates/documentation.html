@@ -83,7 +83,6 @@
 
 <body class="antialiased selection:bg-brand-primary selection:text-white">
 
-    <!-- NAVIGATION (Matches Index) -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-6 nav-blur">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-3">
@@ -103,10 +102,8 @@
         </div>
     </nav>
 
-    <!-- MAIN LAYOUT -->
     <div class="max-w-7xl mx-auto px-6 pt-32 pb-20 flex flex-col lg:flex-row gap-16">
 
-        <!-- SIDEBAR TOC -->
         <aside class="lg:w-72 flex-shrink-0 hidden lg:block">
             <div class="sticky top-32 space-y-10">
                 <div>
@@ -147,21 +144,20 @@
             </div>
         </aside>
 
-        <!-- CONTENT AREA -->
         <main class="flex-1 max-w-3xl">
 
             <header class="mb-16 pb-16 border-b border-slate-100">
                 <div class="flex items-center gap-3 mb-6">
                     <span
-                        class="px-3 py-1 bg-brand-light text-[10px] font-bold text-brand-primary rounded-full uppercase tracking-wider border border-brand-primary/10">v2.5.0-Core</span>
-                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Updated Feb 2026</span>
+                        class="px-3 py-1 bg-brand-light text-[10px] font-bold text-brand-primary rounded-full uppercase tracking-wider border border-brand-primary/10">v3.0.0-Titan</span>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Updated Oct 2026</span>
                 </div>
                 <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6">
                     Technical <span class="text-brand-primary">Manual</span>
                 </h1>
                 <p class="text-lg text-slate-500 font-light leading-relaxed">
-                    A deep dive into the SecureAttic environment—from initial hardware binding to the low-level
-                    cryptographic primitives that protect your data.
+                    A deep dive into the SecureAttic environment—from hardware binding via volume serial hashing to the
+                    custom atomic vault protocols that protect your data.
                 </p>
             </header>
 
@@ -179,19 +175,21 @@
                             cannot be stolen by a digital thief."</p>
                     </div>
                     <p>
-                        By offloading the entropy of your encryption key to a <strong>physical hardware device</strong>,
-                        we create a multi-factor environment where unauthorized access requires physical theft of your
-                        hardware, not just a breach of your OS.
+                        By offloading the entropy of your encryption key to a <strong>physical hardware device</strong>
+                        and
+                        binding it to that specific drive's hardware serial number, we create a multi-factor environment
+                        where
+                        unauthorized access requires physical theft of your specific hardware, not just a cloned copy of
+                        the files.
                     </p>
                 </div>
             </section>
 
-            <!-- NEW SECTION: Installation & Setup -->
             <section id="setup" class="doc-section mb-20">
                 <h2 class="text-2xl font-bold text-slate-900 mb-8">Installation & Setup</h2>
                 <p class="text-slate-600 font-light mb-8 leading-relaxed">
-                    SecureAttic operates as a portable executable, designed for "Zero-Trace" deployment. It utilizes
-                    python-based webview architecture to minimize system footprint.
+                    SecureAttic operates as a portable executable with "Zero-Trace" design principles. It utilizes
+                    user-mode AppData storage to avoid requiring administrative privileges.
                 </p>
 
                 <div class="space-y-4">
@@ -205,9 +203,9 @@
                                 Environment</h4>
                             <p class="text-sm text-slate-500 leading-relaxed">Run the <code
                                     class="bg-slate-100 px-1 py-0.5 rounded text-xs font-mono text-brand-primary">SecureAttic.exe</code>
-                                binary. The application will initialize the local registry files (`vault_targets.json`)
-                                and verify
-                                the presence of the validation token.</p>
+                                binary. The application initializes local configuration in <code
+                                    class="font-mono text-xs">%APPDATA%\SecureAttic</code>,
+                                ensuring persistence without polluting the global registry.</p>
                         </div>
                     </div>
 
@@ -217,12 +215,14 @@
                             <span class="text-2xl font-bold text-slate-900">02</span>
                         </div>
                         <div>
-                            <h4 class="font-bold text-slate-900 mb-2 text-sm uppercase tracking-wider">The Binding
-                                Process</h4>
+                            <h4 class="font-bold text-slate-900 mb-2 text-sm uppercase tracking-wider">Hardware Binding
+                            </h4>
                             <p class="text-sm text-slate-500 leading-relaxed">Insert your chosen USB drive. The
-                                application will scan all available drive letters. When you select a slot, it writes a
-                                hidden <code class="font-mono text-xs">IndexerVolumeGuid</code> token file to the root
-                                of the drive.</p>
+                                application reads the Volume Serial Number via <code
+                                    class="font-mono text-xs">win32api</code>
+                                and binds the encryption key to this specific hardware signature. A token file
+                                <code class="font-mono text-xs">IndexerVolumeGuid</code> is written to the drive root.
+                            </p>
                         </div>
                     </div>
 
@@ -234,9 +234,11 @@
                         <div>
                             <h4 class="font-bold text-slate-900 mb-2 text-sm uppercase tracking-wider">Seed Generation
                             </h4>
-                            <p class="text-sm text-slate-500 leading-relaxed">We generate a 12-word BIP-39 mnemonic
-                                phrase. <strong class="text-red-500">Write this down.</strong> This is the only way to
-                                recover your data if your physical USB drive is lost or destroyed.</p>
+                            <p class="text-sm text-slate-500 leading-relaxed">We generate a BIP-39 mnemonic
+                                phrase (English dictionary). <strong class="text-red-500">Write this down.</strong> This
+                                allows
+                                key recovery if your hardware token is lost or destroyed, bypassing the hardware binding
+                                check.</p>
                         </div>
                     </div>
                 </div>
@@ -246,7 +248,7 @@
                 <h2 class="text-2xl font-bold text-slate-900 mb-8">System Architecture</h2>
                 <p class="text-slate-600 font-light mb-8 leading-relaxed">
                     The SecureAttic engine operates at the user-mode level, utilizing the Python standard library
-                    to interact with the Windows filesystem and registry.
+                    and `pywebview` for a lightweight UI.
                 </p>
 
                 <div class="grid gap-6">
@@ -260,10 +262,11 @@
                             <h4 class="font-bold text-slate-900 mb-2 text-sm uppercase tracking-wider">The "Vault" Layer
                             </h4>
                             <p class="text-sm text-slate-500 leading-relaxed">
-                                Dynamic file locking using atomic move operations. When locked, files are encrypted
-                                and renamed to stealth system drivers (e.g. <code
-                                    class="font-mono text-xs">win_driver_*.sys</code>)
-                                to obfuscate their true nature.
+                                Files are protected via atomic operations. When locked, data is encrypted and renamed
+                                with a
+                                <code class="font-mono text-xs">.vault</code> extension. A JSON header containing the
+                                original filename and timestamp
+                                is injected before the ciphertext to ensure perfect restoration.
                             </p>
                         </div>
                     </div>
@@ -275,13 +278,12 @@
                             <i data-lucide="cpu" class="w-6 h-6"></i>
                         </div>
                         <div>
-                            <h4 class="font-bold text-slate-900 mb-2 text-sm uppercase tracking-wider">Token
-                                Abstraction</h4>
+                            <h4 class="font-bold text-slate-900 mb-2 text-sm uppercase tracking-wider">Insomnia Mode
+                            </h4>
                             <p class="text-sm text-slate-500 leading-relaxed">
-                                Instead of traditional mounting, we verify the presence of the encrypted
-                                <code class="font-mono text-xs">IndexerVolumeGuid</code> master file on the target
-                                drive.
-                                This file contains the wrapped encryption key.
+                                To prevent corruption during encryption operations, the system enforces <code
+                                    class="font-mono text-xs">ES_CONTINUOUS | ES_SYSTEM_REQUIRED</code>,
+                                preventing Windows from sleeping while the application is active.
                             </p>
                         </div>
                     </div>
@@ -321,8 +323,8 @@
                         class="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 blur-[80px] rounded-full group-hover:bg-brand-primary/20 transition-colors duration-500">
                     </div>
                     <div class="flex justify-between items-center mb-6 relative z-10">
-                        <span
-                            class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mono">security_protocol.py</span>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mono">app.py ::
+                            do_crypto_atomic</span>
                         <div class="flex gap-2">
                             <div class="w-2.5 h-2.5 rounded-full bg-red-500/20"></div>
                             <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/20"></div>
@@ -330,50 +332,52 @@
                         </div>
                     </div>
                     <pre class="font-mono text-xs leading-loose text-slate-300 relative z-10 overflow-x-auto">
-<span class="text-slate-500">// Step 1: Generate Entropy</span>
-entropy = os.urandom(<span class="text-brand-accent">16</span>)
+<span class="text-slate-500"># Step 1: Prepare Header</span>
+header_info = {"orig": original_path, "ts": time.time()}
+header_bytes = json.dumps(header_info).encode('utf-8')
 
-<span class="text-slate-500">// Step 2: Create Master Key Hash</span>
-key_hash = hashlib.sha256(entropy).digest()
+<span class="text-slate-500"># Step 2: Encrypt Data</span>
+encrypted_body = cipher.encrypt(raw_data)
 
-<span class="text-slate-500">// Step 3: Initialize Fernet Cipher</span>
-fernet_key = base64.urlsafe_b64encode(key_hash)
-cipher = Fernet(fernet_key)
+<span class="text-slate-500"># Step 3: Pack Payload</span>
+final_data = MAGIC_HEADER + struct.pack("I", len(header_bytes)) + header_bytes + encrypted_body
 
-<span class="text-slate-500">// Step 4: Encrypt Data</span>
-encrypted_blob = cipher.encrypt(file_data)</pre>
+<span class="text-slate-500"># Step 4: Atomic Swap</span>
+shutil.move(temp_path, final_path) <span class="text-slate-500"># Renames to .vault</span></pre>
                 </div>
             </section>
 
-            <!-- NEW SECTION: Hardware Fingerprinting -->
             <section id="hardware-uid" class="doc-section mb-20">
                 <h2 class="text-2xl font-bold text-slate-900 mb-8">Volume Binding</h2>
                 <p class="text-slate-600 font-light mb-8 leading-relaxed">
-                    Most "security keys" just check for the volume label. SecureAttic binds to the drive by placing
-                    a cryptographically signed token file in the root directory.
+                    SecureAttic implements robust hardware binding to prevent key cloning. A simple copy of the key file
+                    to another USB drive will not work.
                 </p>
 
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
                         <h4 class="font-bold text-slate-900 mb-3 text-sm uppercase tracking-wider">
-                            Token Verification</h4>
-                        <p class="text-sm text-slate-500 leading-relaxed">We scan for <code
-                                class="font-mono text-xs">IndexerVolumeGuid</code> and <code
-                                class="font-mono text-xs">SysRecovery.dat</code>. These files contain the decryption
-                            keys
-                            needed to initialize the vault.</p>
+                            Serial Hashing</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            The key file contains a payload in the format <code
+                                class="font-mono text-xs">KEY_BYTES::SERIAL_HASH</code>.
+                            We compute <code class="font-mono text-xs">SHA256(Drive_Serial)</code> at runtime and
+                            compare it
+                            against the stored hash. If they mismatch, the key is rejected.
+                        </p>
                     </div>
                     <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                        <h4 class="font-bold text-slate-900 mb-3 text-sm uppercase tracking-wider">Stealth Attributes
+                        <h4 class="font-bold text-slate-900 mb-3 text-sm uppercase tracking-wider">Token Files
                         </h4>
-                        <p class="text-sm text-slate-500 leading-relaxed">The key files are marked with System, Hidden,
-                            and Read-Only attributes (0x01 | 0x02 | 0x04) via the Windows kernel, making them invisible
-                            to standard Explorer browsing.</p>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            The system scans for <code class="font-mono text-xs">IndexerVolumeGuid</code> (Master) and
+                            <code class="font-mono text-xs">SysRecovery.dat</code> (Backup). These files are
+                            often hidden using System+Hidden attributes.
+                        </p>
                     </div>
                 </div>
             </section>
 
-            <!-- NEW SECTION: Runtime Security -->
             <section id="runtime" class="doc-section mb-20">
                 <h2 class="text-2xl font-bold text-slate-900 mb-8">Runtime Security</h2>
                 <div class="bg-white border border-slate-100 rounded-[2rem] p-8 shadow-lg shadow-brand-primary/5">
@@ -385,18 +389,21 @@ encrypted_blob = cipher.encrypt(file_data)</pre>
                     </div>
 
                     <p class="text-slate-600 font-light leading-relaxed mb-6">
-                        The application spawns a background daemon thread known as the "Sentry." This thread operates
-                        independently of the main UI and polls the hardware bus state every <strong>2 seconds</strong>.
+                        The application spawns a background daemon thread known as the "Sentry" (<code
+                            class="font-mono text-xs">sentry_loop</code>).
+                        This thread operates independently of the main UI and polls the hardware bus state every
+                        <strong>2 seconds</strong>.
                     </p>
 
                     <ul class="space-y-4">
                         <li class="flex gap-4 items-start">
                             <i data-lucide="check-circle" class="w-5 h-5 text-brand-primary mt-0.5 shrink-0"></i>
                             <div>
-                                <h4 class="text-sm font-bold text-slate-900">Active Volume Polling</h4>
-                                <p class="text-xs text-slate-500 mt-1">Checks all mounted drive letters for the
-                                    presence of the authorized <code
-                                        class="font-mono bg-slate-100 px-1 rounded">IndexerVolumeGuid</code> signature.
+                                <h4 class="text-sm font-bold text-slate-900">Auto-Lock Timer</h4>
+                                <p class="text-xs text-slate-500 mt-1">
+                                    If unlocked for more than <strong>15 minutes</strong> (900s), the Sentry
+                                    automatically re-encrypts all data,
+                                    clears the clipboard, and purges the key from RAM.
                                 </p>
                             </div>
                         </li>
@@ -404,17 +411,20 @@ encrypted_blob = cipher.encrypt(file_data)</pre>
                             <i data-lucide="check-circle" class="w-5 h-5 text-brand-primary mt-0.5 shrink-0"></i>
                             <div>
                                 <h4 class="text-sm font-bold text-slate-900">Instant Lock</h4>
-                                <p class="text-xs text-slate-500 mt-1">If the signature vanishes (USB pulled), the
-                                    Sentry triggers the lockdown sequence, encrypting all target paths instantly.</p>
+                                <p class="text-xs text-slate-500 mt-1">If the valid USB signature vanishes (drive
+                                    pulled), the
+                                    Sentry triggers the lockdown sequence immediately.</p>
                             </div>
                         </li>
                         <li class="flex gap-4 items-start">
                             <i data-lucide="check-circle" class="w-5 h-5 text-brand-primary mt-0.5 shrink-0"></i>
                             <div>
-                                <h4 class="text-sm font-bold text-slate-900">Memory Scrubbing</h4>
-                                <p class="text-xs text-slate-500 mt-1">Upon locking, the clipboard is wiped via <code
-                                        class="font-mono bg-slate-100 px-1 rounded">ctypes.windll.user32.EmptyClipboard</code>
-                                    and process working set size is reduced.</p>
+                                <h4 class="text-sm font-bold text-slate-900">Duress Mode</h4>
+                                <p class="text-xs text-slate-500 mt-1">
+                                    Entering specific "Panic Codes" (e.g. 9999) activates a fake interface state,
+                                    populating the UI
+                                    with dummy data while keeping real vaults encrypted.
+                                </p>
                             </div>
                         </li>
                     </ul>
@@ -433,38 +443,41 @@ encrypted_blob = cipher.encrypt(file_data)</pre>
                         </summary>
                         <div
                             class="px-6 pb-6 text-sm text-slate-500 font-light leading-relaxed border-t border-slate-50 pt-4">
-                            Ensure the USB drive is accessible via a drive letter (e.g., E:\). The application
-                            requires read/write access to the root directory to verify the <code
-                                class="font-mono text-xs">IndexerVolumeGuid</code> file.
+                            This can happen if you copied the key file to a new drive. SecureAttic binds to the hardware
+                            serial.
+                            You must use your <strong>Recovery Seed Phrase</strong> to regenerate a new key for the new
+                            drive.
                         </div>
                     </details>
 
                     <details
                         class="group bg-white border border-slate-100 rounded-2xl shadow-sm open:shadow-md transition-all">
                         <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-                            <span class="font-bold text-slate-900 text-sm">"Attic in Use" Error</span>
+                            <span class="font-bold text-slate-900 text-sm">"Attic in Use" / Access Denied</span>
                             <i data-lucide="chevron-down"
                                 class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
                         </summary>
                         <div
                             class="px-6 pb-6 text-sm text-slate-500 font-light leading-relaxed border-t border-slate-50 pt-4">
-                            This usually happens if a file inside the Attic is still open in another application (like
-                            Word or Photoshop). Close all associated apps before attempting to lock the Attic.
+                            Files cannot be locked if they are open in another application. Ensure Word, Excel, or Photo
+                            viewers
+                            are closed before removing your key.
                         </div>
                     </details>
 
                     <details
                         class="group bg-white border border-slate-100 rounded-2xl shadow-sm open:shadow-md transition-all">
                         <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
-                            <span class="font-bold text-slate-900 text-sm">Slow Decryption Speeds</span>
+                            <span class="font-bold text-slate-900 text-sm">Antivirus False Positives</span>
                             <i data-lucide="chevron-down"
                                 class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
                         </summary>
                         <div
                             class="px-6 pb-6 text-sm text-slate-500 font-light leading-relaxed border-t border-slate-50 pt-4">
-                            SecureAttic performs atomic moves and stealth attribute changes on every file. If you have
-                            thousands
-                            of small files, this can take time.
+                            Because SecureAttic encrypts files rapidly, heuristics may flag it. We use the <code
+                                class="font-mono text-xs">.vault</code>
+                            extension to signal legitimate activity. Add the application folder to your AV exclusions if
+                            issues persist.
                         </div>
                     </details>
                 </div>
@@ -476,17 +489,21 @@ encrypted_blob = cipher.encrypt(file_data)</pre>
                     <div class="bg-slate-50 p-6 rounded-2xl">
                         <h4 class="font-bold text-slate-900 mb-3 text-xs uppercase tracking-widest text-brand-primary">
                             Does SecureAttic work on Mac/Linux?</h4>
-                        <p class="text-sm text-slate-500 font-light leading-relaxed">Not currently. The system relies on
-                            <code class="font-mono text-xs">ctypes.windll</code> for attribute management. Mac/Linux
-                            support is planned.
+                        <p class="text-sm text-slate-500 font-light leading-relaxed">
+                            Basic support exists. The code includes logic for macOS <code
+                                class="font-mono text-xs">/Volumes</code>
+                            scanning and Linux <code class="font-mono text-xs">/media</code> monitoring, as well as
+                            <code class="font-mono text-xs">chflags hidden</code> support for Mac.
                         </p>
                     </div>
                     <div class="bg-slate-50 p-6 rounded-2xl">
                         <h4 class="font-bold text-slate-900 mb-3 text-xs uppercase tracking-widest text-brand-primary">
-                            What if my USB drive breaks?</h4>
-                        <p class="text-sm text-slate-500 font-light leading-relaxed">If the drive fails physically, the
-                            key file is lost. You MUST use your Recovery Seed (provided at setup) to
-                            regenerate the encryption keys.</p>
+                            Where is my config stored?</h4>
+                        <p class="text-sm text-slate-500 font-light leading-relaxed">
+                            Configuration is stored in <code class="font-mono text-xs">%APPDATA%/SecureAttic</code>.
+                            This includes <code class="font-mono text-xs">vault_targets.json</code> and the encrypted
+                            local verification file.
+                        </p>
                     </div>
                     <div class="bg-slate-50 p-6 rounded-2xl">
                         <h4 class="font-bold text-slate-900 mb-3 text-xs uppercase tracking-widest text-brand-primary">
@@ -522,7 +539,6 @@ encrypted_blob = cipher.encrypt(file_data)</pre>
         </main>
     </div>
 
-    <!-- FOOTER (Matches Index) -->
     <footer class="py-12 px-6 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="flex flex-col items-center md:items-start gap-3">

@@ -52,7 +52,6 @@
 
 <body class="antialiased selection:bg-brand-primary selection:text-white">
 
-    <!-- NAVIGATION (Matches Index) -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-6 nav-blur">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <a href="index.html" class="flex items-center gap-3">
@@ -72,7 +71,6 @@
         </div>
     </nav>
 
-    <!-- HEADER -->
     <header class="pt-40 pb-20 px-6 bg-white">
         <div class="max-w-3xl mx-auto text-center">
             <div
@@ -84,28 +82,43 @@
                 Cookie <span class="text-brand-primary">Policy</span>
             </h1>
             <p class="text-lg text-slate-500 font-light leading-relaxed mb-8">
-                Transparency regarding the data snippets we use to keep your session secure.
+                Transparency regarding data persistence in our desktop application and web portal.
             </p>
             <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                Last Updated: Jan 25, 2026
+                Last Updated: Oct 10, 2026
             </div>
         </div>
     </header>
 
-    <!-- CONTENT -->
     <main class="pb-32 px-6">
         <div class="max-w-3xl mx-auto space-y-12">
 
             <div class="prose prose-slate max-w-none">
                 <p class="text-slate-600 font-light leading-relaxed text-lg">
-                    SecureAttic uses cookies and similar technologies to ensure our website and SaaS license portal
-                    function correctly. We do <strong class="font-bold text-slate-800">not</strong> use cookies for
-                    behavioral tracking or advertising.
+                    SecureAttic operates primarily as a desktop application with minimal web dependencies.
+                    We distinguish between "Browser Cookies" (used on our website) and "Local State" (used by the app).
                 </p>
             </div>
 
             <div class="grid gap-8">
-                <!-- Section 1 -->
+                <div
+                    class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-brand-primary/20 transition-colors group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div
+                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm text-brand-primary group-hover:scale-110 transition-transform">
+                            <i data-lucide="monitor" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">1. Desktop Application</h3>
+                    </div>
+                    <p class="text-sm text-slate-500 font-light leading-relaxed pl-14">
+                        The SecureAttic desktop application (executable) <strong class="text-slate-900">does not use
+                            cookies</strong>.
+                        Instead, it uses local JSON configuration files stored in <code
+                            class="text-xs bg-slate-200 px-1 rounded">%APPDATA%\SecureAttic</code>
+                        to maintain your settings, license activation state, and vault preferences.
+                    </p>
+                </div>
+
                 <div
                     class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-brand-primary/20 transition-colors group">
                     <div class="flex items-center gap-4 mb-4">
@@ -113,33 +126,32 @@
                             class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm text-brand-primary group-hover:scale-110 transition-transform">
                             <i data-lucide="shield-check" class="w-5 h-5"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">1. Essential Cookies</h3>
+                        <h3 class="text-xl font-bold text-slate-900">2. Essential Web Cookies</h3>
                     </div>
                     <p class="text-sm text-slate-500 font-light leading-relaxed pl-14">
-                        These are strictly necessary for the website to function. They allow you to log into your
-                        license dashboard and remain authenticated during your session. Without these, the service
-                        cannot be provided.
+                        When visiting our marketing website or using the checkout portal, essential cookies are
+                        required.
+                        These allow you to purchase a license and securely process payments. Without these, the checkout
+                        flow cannot function.
                     </p>
                 </div>
 
-                <!-- Section 2 -->
                 <div
                     class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-brand-primary/20 transition-colors group">
                     <div class="flex items-center gap-4 mb-4">
                         <div
                             class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm text-brand-primary group-hover:scale-110 transition-transform">
-                            <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
+                            <i data-lucide="globe" class="w-5 h-5"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">2. Analytical Cookies</h3>
+                        <h3 class="text-xl font-bold text-slate-900">3. Embedded Webview</h3>
                     </div>
                     <p class="text-sm text-slate-500 font-light leading-relaxed pl-14">
-                        We use anonymous analytical tools to understand how visitors interact with our landing page
-                        (e.g., page load speeds, successful downloads). This data is aggregated and does not identify
-                        individual users.
+                        The desktop application utilizes a "Webview" (embedded browser) to render the user interface.
+                        This component may cache local UI assets (HTML/CSS) to improve performance, but it does not
+                        track user behavior or send analytics data.
                     </p>
                 </div>
 
-                <!-- Section 3 -->
                 <div
                     class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-brand-primary/20 transition-colors group">
                     <div class="flex items-center gap-4 mb-4">
@@ -147,34 +159,17 @@
                             class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm text-brand-primary group-hover:scale-110 transition-transform">
                             <i data-lucide="credit-card" class="w-5 h-5"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900">3. Third-Party Cookies</h3>
+                        <h3 class="text-xl font-bold text-slate-900">4. Third-Party Processors</h3>
                     </div>
                     <p class="text-sm text-slate-500 font-light leading-relaxed pl-14">
-                        Our payment provider, <strong class="font-medium text-slate-700">Lemon Squeezy</strong>, may set
-                        cookies required to process your transaction and prevent fraud during the checkout process.
-                        These are governed by their respective privacy policies.
-                    </p>
-                </div>
-
-                <!-- Section 4 -->
-                <div
-                    class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-brand-primary/20 transition-colors group">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div
-                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm text-brand-primary group-hover:scale-110 transition-transform">
-                            <i data-lucide="settings" class="w-5 h-5"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900">4. Managing Cookies</h3>
-                    </div>
-                    <p class="text-sm text-slate-500 font-light leading-relaxed pl-14">
-                        Most browsers allow you to block or delete cookies through their settings. However, please note
-                        that disabling <strong>Essential Cookies</strong> may prevent you from accessing your license
-                        management dashboard or activating your software.
+                        Our payment provider, <strong class="font-medium text-slate-700">Lemon Squeezy</strong>, acts as
+                        the Merchant of Record.
+                        They may set cookies during the checkout process to detect fraud and validate payment sessions.
+                        These are governed by Lemon Squeezy's privacy policy.
                     </p>
                 </div>
             </div>
 
-            <!-- PDF Download Section -->
             <div class="mt-16 pt-12 border-t border-slate-100">
                 <div
                     class="flex flex-col md:flex-row justify-between items-center gap-8 bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
@@ -200,7 +195,6 @@
         </div>
     </main>
 
-    <!-- FOOTER (Matches Index) -->
     <footer class="py-12 px-6 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="flex flex-col items-center md:items-start gap-3">
