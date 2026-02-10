@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO & META DATA -->
     <title>SecureAttic | Enterprise Hardware-Locked Stealth Encryption</title>
     <meta name="description"
         content="Turn any USB drive into a physical cryptographic key. SecureAttic offers military-grade hardware binding, ghost mode file obfuscation, and active kernel-level monitoring for Windows.">
@@ -14,17 +13,15 @@
     <meta name="author" content="SecureAttic">
     <meta name="robots" content="index, follow">
 
-    <!-- OPEN GRAPH / SOCIAL -->
     <meta property="og:title" content="SecureAttic | Physical Security for Digital Assets">
     <meta property="og:description"
         content="Stop trusting passwords. Bind your sensitive data to a physical USB drive. If the drive is removed, the data vanishes from the file system.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://secureattic.com">
-    <meta property="og:image" content="https://secureattic.com/static/social-preview.png">
+    <meta property="og:image" content="logo.png">
 
-    <link rel="icon" href="/static/logo.png" />
+    <link rel="icon" href="logo.png" />
 
-    <!-- STRUCTURED DATA (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -48,7 +45,7 @@
                 extend: {
                     colors: {
                         brand: {
-                            primary: '#244997',
+                            primary: '#244997',   /* Royal Blue */
                             deep: '#1b3670',
                             light: '#f4f7ff',
                             accent: '#4cc9f0',
@@ -63,13 +60,7 @@
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'float-delayed': 'float 6s ease-in-out 1s infinite',
-                        'float-slow': 'float 8s ease-in-out infinite',
-                        'orbit': 'orbit 20s linear infinite',
-                        'orbit-reverse': 'orbit 15s linear infinite reverse',
-                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
                         'shimmer': 'shimmer 2s linear infinite',
-                        'slide-up': 'slideUp 0.6s ease-out forwards',
-                        'fade-in': 'fadeIn 0.8s ease-out forwards',
                         'radar': 'radar 2s linear infinite',
                     },
                     keyframes: {
@@ -77,25 +68,9 @@
                             '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
                             '50%': { transform: 'translateY(-10px) rotate(1deg)' },
                         },
-                        orbit: {
-                            '0%': { transform: 'rotate(0deg) translateX(150px) rotate(0deg)' },
-                            '100%': { transform: 'rotate(360deg) translateX(150px) rotate(-360deg)' },
-                        },
-                        pulseGlow: {
-                            '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
-                            '50%': { opacity: 0.6, transform: 'scale(1.05)' },
-                        },
                         shimmer: {
                             '0%': { backgroundPosition: '-1000px 0' },
                             '100%': { backgroundPosition: '1000px 0' },
-                        },
-                        slideUp: {
-                            '0%': { opacity: 0, transform: 'translateY(20px)' },
-                            '100%': { opacity: 1, transform: 'translateY(0)' },
-                        },
-                        fadeIn: {
-                            '0%': { opacity: 0 },
-                            '100%': { opacity: 1 },
                         },
                         radar: {
                             '0%': { transform: 'scale(0.8)', opacity: 0.5 },
@@ -108,7 +83,6 @@
     </script>
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Enhanced Font Stack -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -119,7 +93,6 @@
         body {
             font-family: 'Inter', system-ui, sans-serif;
             color: #0F172A;
-            /* Global soft blue gradient background */
             background: linear-gradient(to bottom, #EFF6FF, #F8FAFC, #EFF6FF);
             min-height: 100vh;
             overflow-x: hidden;
@@ -132,11 +105,6 @@
         h5,
         h6 {
             font-family: 'Montserrat', sans-serif;
-        }
-
-        /* Ensure sections inherit background or are transparent */
-        section {
-            background-color: transparent !important;
         }
 
         /* Smooth reveal animations */
@@ -163,15 +131,7 @@
             transition-delay: 0.3s;
         }
 
-        .stagger-4 {
-            transition-delay: 0.4s;
-        }
-
         /* Premium gradient backgrounds */
-        .gradient-radial {
-            background: radial-gradient(circle at 50% 0%, rgba(36, 73, 151, 0.08) 0%, transparent 70%);
-        }
-
         .gradient-mesh {
             background:
                 radial-gradient(at 27% 37%, rgba(76, 201, 240, 0.12) 0px, transparent 50%),
@@ -180,7 +140,6 @@
                 radial-gradient(at 10% 29%, rgba(36, 73, 151, 0.08) 0px, transparent 50%);
         }
 
-        /* Enhanced grid background */
         .bg-tech-grid {
             background-size: 40px 40px;
             background-image:
@@ -189,7 +148,6 @@
             mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
         }
 
-        /* Glass morphism nav */
         .nav-glass {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: saturate(180%) blur(12px);
@@ -197,16 +155,11 @@
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.02);
         }
 
-        /* Shimmer effect for CTAs */
         .shimmer-effect {
-            background: linear-gradient(90deg,
-                    transparent 0%,
-                    rgba(255, 255, 255, 0.3) 50%,
-                    transparent 100%);
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
             background-size: 200% 100%;
         }
 
-        /* Card hover effects */
         .feature-card {
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -216,7 +169,6 @@
             box-shadow: 0 10px 40px rgba(36, 73, 151, 0.1);
         }
 
-        /* Enhanced code blocks */
         code {
             background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             padding: 0.15rem 0.4rem;
@@ -226,40 +178,31 @@
             border: 1px solid #e2e8f0;
         }
 
-        /* Smooth scroll snap for sections */
         @media (min-width: 768px) {
             section {
                 scroll-margin-top: 80px;
             }
         }
 
-        /* Glowing orbs */
         .glow-orb {
             filter: blur(60px);
             opacity: 0.5;
-            animation: pulseGlow 8s ease-in-out infinite;
         }
 
-        /* Custom selection */
         ::selection {
             background-color: #244997;
             color: white;
-        }
-
-        img {
-            image-rendering: -webkit-optimize-contrast;
         }
     </style>
 </head>
 
 <body class="antialiased">
 
-    <!-- COMPACT NAVIGATION -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-3">
         <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <div class="relative">
-                    <img src="/static/logo.png" alt="Secure Attic" class="h-7 w-auto object-contain relative z-10">
+                    <img src="logo.png" alt="Secure Attic" class="h-7 w-auto object-contain relative z-10">
                     <div class="absolute inset-0 bg-brand-primary/20 blur-md"></div>
                 </div>
                 <span class="text-lg font-bold tracking-tight text-slate-900 hidden md:block">
@@ -282,18 +225,15 @@
         </div>
     </nav>
 
-    <!-- SLEEK HERO SECTION -->
     <section class="relative pt-24 pb-12 lg:pt-32 lg:pb-16 px-6 overflow-hidden min-h-[85vh] flex items-center">
-        <!-- Background Elements -->
         <div class="absolute inset-0 gradient-mesh -z-10"></div>
         <div class="absolute inset-0 bg-tech-grid -z-10 opacity-60"></div>
-        <div class="absolute top-20 left-1/4 w-64 h-64 bg-brand-primary/10 rounded-full glow-orb"></div>
-        <div class="absolute bottom-20 right-1/4 w-64 h-64 bg-brand-accent/10 rounded-full glow-orb"
+        <div class="absolute top-20 left-1/4 w-64 h-64 bg-brand-primary/10 rounded-full glow-orb animate-pulse"></div>
+        <div class="absolute bottom-20 right-1/4 w-64 h-64 bg-brand-accent/10 rounded-full glow-orb animate-pulse"
             style="animation-delay: 2s;"></div>
 
         <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-            <!-- Left: Text Content -->
             <div class="reveal-group active relative z-10">
                 <div
                     class="inline-flex items-center px-3 py-1.5 bg-white/80 backdrop-blur-sm border border-brand-primary/20 rounded-full mb-4 shadow-sm">
@@ -325,14 +265,13 @@
                         </span>
                         <div class="absolute inset-0 shimmer-effect animate-shimmer"></div>
                     </a>
-                    <a href="/static/SecureAtticInstaller.exe"
+                    <a href="SecureAttic_Setup_v3.0.0.exe"
                         class="group text-slate-600 hover:text-brand-primary px-6 py-3 rounded-xl text-sm font-semibold transition-all border border-slate-200 hover:border-brand-primary/30 flex items-center gap-2 bg-white/50 backdrop-blur-sm">
                         <i data-lucide="download" class="w-4 h-4 transition-transform group-hover:-translate-y-0.5"></i>
                         Download Core
                     </a>
                 </div>
 
-                <!-- Compact Tech Specs -->
                 <div
                     class="grid grid-cols-2 gap-3 text-[10px] font-bold uppercase tracking-wider text-slate-500 max-w-sm mb-6">
                     <span
@@ -354,43 +293,34 @@
                 </div>
             </div>
 
-            <!-- Right: Premium 3D Visual (Matching Uploaded Image) -->
             <div class="relative h-[400px] lg:h-[450px] flex items-center justify-center reveal-group stagger-2 active">
 
-                <!-- Subtle Background Circle -->
                 <div class="absolute w-[450px] h-[450px] border border-slate-200 rounded-full opacity-60"></div>
                 <div class="absolute w-[300px] h-[300px] border border-slate-200 rounded-full opacity-60"></div>
 
-                <!-- Main Device Card (Dark Blue) -->
                 <div class="relative animate-float z-20">
                     <div
                         class="w-48 h-72 bg-brand-deep rounded-[2rem] shadow-2xl shadow-brand-deep/30 flex flex-col items-center justify-center transform rotate-[-10deg] relative overflow-hidden ring-1 ring-white/20">
 
-                        <!-- Top Notch -->
                         <div class="w-20 h-3 bg-white/10 rounded-full mb-8"></div>
 
-                        <!-- Lock Icon -->
                         <i data-lucide="lock" class="w-16 h-16 text-white mb-6"></i>
 
-                        <!-- Dots -->
                         <div class="flex gap-2">
                             <div class="w-1.5 h-1.5 bg-brand-accent rounded-full animate-pulse"></div>
                             <div class="w-1.5 h-1.5 bg-brand-accent/50 rounded-full"></div>
                             <div class="w-1.5 h-1.5 bg-brand-accent/50 rounded-full"></div>
                         </div>
 
-                        <!-- Shine -->
                         <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent">
                         </div>
                     </div>
 
-                    <!-- Floating White Badge 1 (Shield) -->
                     <div
                         class="absolute -top-4 -right-12 w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center animate-float-delayed border border-slate-100">
                         <i data-lucide="shield-check" class="w-7 h-7 text-emerald-500"></i>
                     </div>
 
-                    <!-- Floating White Badge 2 (File) -->
                     <div class="absolute -bottom-4 -left-12 w-14 h-14 bg-white rounded-2xl shadow-xl flex items-center justify-center animate-float backdrop-blur-sm border border-slate-100"
                         style="animation-delay: 1.5s;">
                         <i data-lucide="file-key" class="w-6 h-6 text-brand-primary"></i>
@@ -400,7 +330,6 @@
         </div>
     </section>
 
-    <!-- COMPACT METRICS BAR -->
     <section class="py-6 px-6 border-y border-slate-100/50 bg-white/20 backdrop-blur-sm">
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
@@ -424,7 +353,6 @@
         </div>
     </section>
 
-    <!-- PROBLEM VS SOLUTION - COMPACT -->
     <section class="py-16 px-6">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-10 reveal-group">
@@ -435,7 +363,6 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 reveal-group stagger-1">
-                <!-- Standard Way -->
                 <div
                     class="group relative p-6 rounded-2xl bg-white/60 border border-slate-200 hover:border-slate-300 transition-all shadow-sm">
                     <div class="absolute top-4 right-4"><i data-lucide="x-circle" class="w-5 h-5 text-red-400"></i>
@@ -458,7 +385,6 @@
                     </ul>
                 </div>
 
-                <!-- SecureAttic Way -->
                 <div
                     class="group relative p-6 rounded-2xl bg-white border border-brand-primary/30 shadow-sm transition-all hover:shadow-md">
                     <div class="absolute top-4 right-4"><i data-lucide="shield-check"
@@ -487,7 +413,6 @@
         </div>
     </section>
 
-    <!-- FEATURES - SLEEK GRID -->
     <section id="features" class="py-20 px-6 relative overflow-hidden">
         <div class="max-w-6xl mx-auto relative z-10">
             <div class="text-center mb-16 reveal-group">
@@ -497,7 +422,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Feature 1 -->
                 <div
                     class="reveal-group feature-card bg-white p-6 rounded-2xl border border-slate-200 hover:border-brand-primary/20 shadow-sm">
                     <div
@@ -509,7 +433,6 @@
                         USB -> Vault locks instantly.</p>
                 </div>
 
-                <!-- Feature 2 -->
                 <div
                     class="reveal-group stagger-1 feature-card bg-white p-6 rounded-2xl border border-slate-200 hover:border-purple-500/20 shadow-sm">
                     <div
@@ -521,7 +444,6 @@
                         (e.g. <code>win_driver.sys</code>) to evade forensics.</p>
                 </div>
 
-                <!-- Feature 3 -->
                 <div id="panic-mode"
                     class="reveal-group stagger-2 feature-card bg-white p-6 rounded-2xl border border-slate-200 hover:border-red-500/20 shadow-sm">
                     <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mb-4 text-red-600">
@@ -532,7 +454,6 @@
                         local artifacts immediately.</p>
                 </div>
 
-                <!-- Feature 4 -->
                 <div
                     class="reveal-group stagger-3 feature-card bg-white p-6 rounded-2xl border border-slate-200 hover:border-emerald-500/20 shadow-sm">
                     <div
@@ -547,7 +468,6 @@
         </div>
     </section>
 
-    <!-- NEW VISUAL TIMELINE (How It Works - Updated to "Pictures" style) -->
     <section id="how-it-works" class="py-20 px-6 relative overflow-hidden">
         <div class="max-w-6xl mx-auto relative z-10">
             <div class="text-center mb-16 reveal-group">
@@ -556,12 +476,10 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Step 1 Illustration -->
                 <div
                     class="reveal-group bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-lg transition-all text-center group">
                     <div
                         class="w-24 h-24 mx-auto bg-brand-light rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <!-- CSS Drive Visual -->
                         <div class="w-10 h-14 bg-brand-primary rounded-md relative flex justify-center">
                             <div class="absolute -top-3 w-8 h-4 bg-slate-300 rounded-sm border border-slate-400"></div>
                             <div class="absolute top-2 w-6 h-8 border-2 border-white/30 rounded-sm"></div>
@@ -572,12 +490,10 @@
                         USB's unique serial number. Your key only exists when this specific device is plugged in.</p>
                 </div>
 
-                <!-- Step 2 Illustration -->
                 <div
                     class="reveal-group stagger-1 bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-lg transition-all text-center group">
                     <div
                         class="w-24 h-24 mx-auto bg-brand-light rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <!-- CSS Radar Visual -->
                         <div
                             class="relative w-14 h-14 border-2 border-brand-accent rounded-full flex items-center justify-center">
                             <div class="absolute w-full h-full bg-brand-accent/20 rounded-full animate-radar"></div>
@@ -589,12 +505,10 @@
                         your ports every 3 seconds. Drive removed? The vault locks instantly.</p>
                 </div>
 
-                <!-- Step 3 Illustration -->
                 <div
                     class="reveal-group stagger-2 bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-lg transition-all text-center group">
                     <div
                         class="w-24 h-24 mx-auto bg-brand-light rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <!-- CSS File Visual -->
                         <div class="relative">
                             <i data-lucide="file" class="w-14 h-14 text-slate-300"></i>
                             <div class="absolute inset-0 flex items-center justify-center">
@@ -610,7 +524,6 @@
         </div>
     </section>
 
-    <!-- COMPACT FAQ -->
     <section class="py-20 px-6">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-10 reveal-group">
@@ -639,7 +552,6 @@
         </div>
     </section>
 
-    <!-- SLEEK CTA (UPDATED PRICING) -->
     <section class="relative py-20 px-6">
         <div class="max-w-2xl mx-auto text-center reveal-group">
             <h2 class="text-3xl font-display font-bold text-slate-900 mb-4">Take Back Control</h2>
@@ -671,14 +583,12 @@
         </div>
     </section>
 
-    <!-- FULL FOOTER RESTORED -->
     <footer class="py-12 px-6 bg-slate-900 text-white border-t border-slate-800">
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <!-- Brand Column -->
                 <div class="md:col-span-2">
                     <div class="flex items-center gap-2 mb-4 opacity-90">
-                        <img src="/static/logo.png" alt="Logo" class="h-6 w-auto brightness-0 invert">
+                        <img src="logo.png" alt="Logo" class="h-6 w-auto brightness-0 invert">
                         <span class="text-lg font-bold">Secure<span class="text-brand-accent">Attic</span></span>
                     </div>
                     <p class="text-xs text-slate-400 leading-relaxed mb-6 max-w-xs">
@@ -694,26 +604,19 @@
                             class="w-8 h-8 bg-white/5 hover:bg-white/10 rounded-lg flex items-center justify-center transition-all">
                             <i data-lucide="github" class="w-4 h-4 text-slate-400"></i>
                         </a>
-                        <a href="#"
-                            class="w-8 h-8 bg-white/5 hover:bg-white/10 rounded-lg flex items-center justify-center transition-all">
-                            <i data-lucide="linkedin" class="w-4 h-4 text-slate-400"></i>
-                        </a>
                     </div>
                 </div>
 
-                <!-- Product Column -->
                 <div>
                     <h4 class="font-bold text-white text-sm mb-4 uppercase tracking-wide">Product</h4>
                     <ul class="space-y-2 text-xs text-slate-400">
                         <li><a href="#features" class="hover:text-white transition-colors">Features</a></li>
                         <li><a href="documentation.html" class="hover:text-white transition-colors">Documentation</a>
                         </li>
-                        <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
                         <li><a href="view-order.html" class="hover:text-white transition-colors">View Order</a></li>
                     </ul>
                 </div>
 
-                <!-- Support Column -->
                 <div>
                     <h4 class="font-bold text-white text-sm mb-4 uppercase tracking-wide">Support</h4>
                     <ul class="space-y-2 text-xs text-slate-400">

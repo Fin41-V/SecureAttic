@@ -8,7 +8,7 @@
     <meta name="description"
         content="SecureAttic Privacy Policy. We operate on a zero-knowledge, local-first basis. Your data never leaves your device.">
 
-    <link rel="icon" href="/static/logo.png" />
+    <link rel="icon" href="logo.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -16,10 +16,11 @@
                 extend: {
                     colors: {
                         brand: {
-                            primary: '#244997',   /* Matches index.html */
+                            primary: '#244997',   /* Royal Blue */
                             deep: '#1b3670',
                             light: '#f4f7ff',
-                            accent: '#4cc9f0'
+                            accent: '#4cc9f0',
+                            danger: '#ef4444'
                         }
                     },
                     fontFamily: {
@@ -43,68 +44,78 @@
         }
 
         .nav-blur {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* App-specific scrollbar hiding for cleaner UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
         }
     </style>
 </head>
 
 <body class="antialiased selection:bg-brand-primary selection:text-white">
 
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-6 nav-blur">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="/static/logo.png" alt="Secure Attic" class="h-8 w-auto object-contain">
-                <span class="text-lg font-bold tracking-tight text-slate-900 hidden md:block">Secure<span
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-4 nav-blur">
+        <div class="max-w-5xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="logo.png" alt="Secure Attic"
+                    class="h-8 w-auto object-contain group-hover:scale-105 transition-transform">
+                <span class="text-lg font-bold tracking-tight text-slate-900">Secure<span
                         class="text-brand-primary">Attic</span></span>
             </a>
-            <div class="flex items-center gap-8">
-                <a href="index.html"
-                    class="text-[11px] font-semibold uppercase tracking-widest text-slate-500 hover:text-brand-primary transition-colors">Home</a>
-                <a href="contact.html"
-                    class="text-[11px] font-semibold uppercase tracking-widest text-slate-500 hover:text-brand-primary transition-colors">Contact</a>
-                <a href="https://checkout.secureattic.com/checkout/buy/53028f89-6860-449c-86e8-ca8d89a85684"
-                    class="bg-brand-primary text-white px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wide hover:bg-brand-deep transition-colors shadow-lg shadow-brand-primary/20">Get
-                    License</a>
+
+            <div class="flex items-center gap-6">
+                <button onclick="window.history.back()"
+                    class="text-[11px] font-bold uppercase tracking-widest text-slate-400 hover:text-brand-primary transition-colors flex items-center gap-2">
+                    <i data-lucide="arrow-left" class="w-3 h-3"></i> Back
+                </button>
             </div>
         </div>
     </nav>
 
-    <header class="pt-40 pb-20 px-6 bg-white">
-        <div class="max-w-4xl mx-auto text-center">
+    <header class="pt-32 pb-16 px-6 bg-white">
+        <div class="max-w-3xl mx-auto text-center">
             <div
                 class="inline-flex items-center gap-2 px-3 py-1 bg-brand-light text-[10px] font-bold text-brand-primary rounded-full uppercase tracking-wider border border-brand-primary/10 mb-6">
                 <i data-lucide="shield-check" class="w-3 h-3"></i>
                 Legal Documentation
             </div>
-            <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 mb-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
                 Privacy <span class="text-brand-primary">Policy.</span>
             </h1>
 
             <div
                 class="flex flex-wrap justify-center gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mt-8">
-                <span class="flex items-center gap-2"><i data-lucide="calendar" class="w-3 h-3"></i> Effective: Oct 10,
+                <span class="flex items-center gap-2"><i data-lucide="calendar" class="w-3 h-3"></i> Effective: Feb 10,
                     2026</span>
                 <span class="flex items-center gap-2"><i data-lucide="refresh-cw"
-                        class="w-3 h-3 text-brand-primary"></i> Revision: 1.1.0-Titan</span>
+                        class="w-3 h-3 text-brand-primary"></i> Revision: 3.0.0-Titan</span>
             </div>
         </div>
     </header>
 
     <main class="pb-32 px-6">
-        <div class="max-w-4xl mx-auto space-y-16">
+        <div class="max-w-3xl mx-auto space-y-12">
 
             <div class="prose prose-slate max-w-none text-center">
-                <p class="text-slate-600 font-light leading-relaxed text-lg max-w-2xl mx-auto">
-                    At SecureAttic, privacy isn't just a compliance requirement—it's the core engineering principle. We
-                    operate on a <strong>Local-First, Zero-Knowledge</strong> architecture. This means we technically
-                    cannot see, access, or sell your data because it never leaves your physical device.
+                <p class="text-slate-600 font-medium leading-relaxed text-lg max-w-2xl mx-auto">
+                    At SecureAttic, privacy isn't just compliance—it's architecture. We operate on a
+                    <strong>Local-First, Zero-Knowledge</strong> basis. We technically cannot see, access, or sell your
+                    data because it never leaves your physical device.
                 </p>
             </div>
 
-            <div
-                class="p-8 md:p-12 bg-slate-900 rounded-[2.5rem] shadow-2xl shadow-slate-900/20 relative overflow-hidden group">
+            <div class="p-8 bg-slate-900 rounded-[2rem] shadow-2xl shadow-slate-900/20 relative overflow-hidden group">
                 <div
                     class="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 blur-3xl -mr-16 -mt-16 pointer-events-none group-hover:bg-brand-primary/20 transition-colors duration-500">
                 </div>
@@ -115,13 +126,15 @@
                             class="w-8 h-8 rounded-full bg-brand-primary/20 flex items-center justify-center border border-brand-primary/30">
                             <i data-lucide="lock" class="w-4 h-4 text-brand-accent"></i>
                         </div>
-                        <h4 class="text-xs font-bold text-white uppercase tracking-widest opacity-90">Core Promise</h4>
+                        <h4 class="text-xs font-bold text-white uppercase tracking-widest opacity-90">Core Architecture
+                        </h4>
                     </div>
 
-                    <p class="text-slate-400 text-sm leading-relaxed mb-0">
-                        The Developer of SecureAttic does not collect telemetry, usage statistics, or file metadata from
-                        your local installation. The only network request made by the application is a one-time
-                        verification of your license key.
+                    <p class="text-slate-400 text-sm leading-relaxed mb-0 font-medium">
+                        The Developer of SecureAttic does not collect telemetry, usage statistics, or file metadata.
+                        The <span
+                            class="text-white font-bold underline decoration-brand-primary underline-offset-4">only</span>
+                        network request made by this application is a one-time verification of your license key.
                     </p>
                 </div>
             </div>
@@ -129,160 +142,143 @@
             <div class="grid gap-8">
 
                 <div
-                    class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-brand-primary/20 transition-all hover:shadow-lg hover:shadow-brand-primary/5 group">
+                    class="bg-white border border-slate-200 rounded-3xl p-8 hover:border-brand-primary/30 transition-all hover:shadow-xl hover:shadow-brand-primary/5 group">
                     <div class="flex items-center gap-4 mb-4">
                         <div
-                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm text-brand-primary group-hover:scale-110 transition-transform">
-                            <span class="font-bold text-lg">1</span>
-                        </div>
+                            class="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center text-brand-primary font-bold text-lg group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                            1</div>
                         <h3 class="text-xl font-bold text-slate-900">Data We Do Not Collect</h3>
                     </div>
-                    <p class="text-sm text-slate-600 font-light leading-relaxed pl-14 mb-4">
+                    <p class="text-sm text-slate-600 font-medium leading-relaxed pl-14 mb-4">
                         To be explicitly clear, the SecureAttic application has <strong>NO</strong> capability to
                         transmit:
                     </p>
                     <ul class="space-y-4 pl-14">
-                        <li class="text-sm text-slate-600 font-light leading-relaxed flex gap-3">
-                            <i data-lucide="x-circle" class="w-4 h-4 text-brand-primary mt-0.5 shrink-0"></i>
-                            <span>Your files, documents, or directory structures.</span>
+                        <li class="text-sm text-slate-600 flex gap-3">
+                            <i data-lucide="x-circle" class="w-4 h-4 text-brand-danger mt-0.5 shrink-0"></i>
+                            <span>Your files, folder names, or directory structures.</span>
                         </li>
-                        <li class="text-sm text-slate-600 font-light leading-relaxed flex gap-3">
-                            <i data-lucide="x-circle" class="w-4 h-4 text-brand-primary mt-0.5 shrink-0"></i>
-                            <span>Your original hardware serial numbers. (We hash them locally for binding, but never
-                                transmit the hash).</span>
+                        <li class="text-sm text-slate-600 flex gap-3">
+                            <i data-lucide="x-circle" class="w-4 h-4 text-brand-danger mt-0.5 shrink-0"></i>
+                            <span>Your original hardware serial numbers (we only store a non-reversible hash
+                                locally).</span>
                         </li>
-                        <li class="text-sm text-slate-600 font-light leading-relaxed flex gap-3">
-                            <i data-lucide="x-circle" class="w-4 h-4 text-brand-primary mt-0.5 shrink-0"></i>
-                            <span>Your encryption keys or recovery seeds.</span>
+                        <li class="text-sm text-slate-600 flex gap-3">
+                            <i data-lucide="x-circle" class="w-4 h-4 text-brand-danger mt-0.5 shrink-0"></i>
+                            <span><strong>Your Master Keys or Recovery Phrase.</strong> We cannot recover lost
+                                keys.</span>
                         </li>
                     </ul>
                 </div>
 
                 <div
-                    class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-brand-primary/20 transition-all hover:shadow-lg hover:shadow-brand-primary/5 group">
+                    class="bg-white border border-slate-200 rounded-3xl p-8 hover:border-brand-primary/30 transition-all hover:shadow-xl hover:shadow-brand-primary/5 group">
                     <div class="flex items-center gap-4 mb-4">
                         <div
-                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm text-brand-primary group-hover:scale-110 transition-transform">
-                            <span class="font-bold text-lg">2</span>
-                        </div>
+                            class="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center text-brand-primary font-bold text-lg group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                            2</div>
                         <h3 class="text-xl font-bold text-slate-900">Data We Do Collect</h3>
                     </div>
-                    <p class="text-sm text-slate-600 font-light leading-relaxed pl-14 mb-4">
-                        Our data collection is limited strictly to transaction processing and license validation.
+                    <p class="text-sm text-slate-600 font-medium leading-relaxed pl-14 mb-4">
+                        Our data collection is limited strictly to transaction processing:
                     </p>
                     <ul class="space-y-4 pl-14">
-                        <li class="text-sm text-slate-600 font-light leading-relaxed flex gap-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-brand-primary mt-2 shrink-0"></span>
-                            <span><strong class="text-slate-900 font-medium">Billing Info:</strong> When you purchase a
-                                license, your payment data is processed by LemonSqueezy (Merchant of Record).
-                                SecureAttic
-                                never sees your credit card number.</span>
+                        <li class="text-sm text-slate-600 flex gap-3">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0"></i>
+                            <span><strong class="text-slate-900">License Key:</strong> Sent to our API to verify
+                                validity.</span>
                         </li>
-                        <li class="text-sm text-slate-600 font-light leading-relaxed flex gap-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-brand-primary mt-2 shrink-0"></span>
-                            <span><strong class="text-slate-900 font-medium">License Verification:</strong> During
-                                activation, the app sends your License Key to the LemonSqueezy API to verify validity.
-                            </span>
-                        </li>
-                        <li class="text-sm text-slate-600 font-light leading-relaxed flex gap-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-brand-primary mt-2 shrink-0"></span>
-                            <span><strong class="text-slate-900 font-medium">Email Address:</strong> Used solely to
-                                deliver your license key and critical security updates.</span>
+                        <li class="text-sm text-slate-600 flex gap-3">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500 mt-0.5 shrink-0"></i>
+                            <span><strong class="text-slate-900">IP Address:</strong> Logged temporarily during
+                                activation for fraud prevention (preventing one key from being used on 100
+                                devices).</span>
                         </li>
                     </ul>
                 </div>
 
                 <div
-                    class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-brand-primary/20 transition-all hover:shadow-lg hover:shadow-brand-primary/5 group">
+                    class="bg-white border border-slate-200 rounded-3xl p-8 hover:border-brand-primary/30 transition-all hover:shadow-xl hover:shadow-brand-primary/5 group">
                     <div class="flex items-center gap-4 mb-4">
                         <div
-                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm text-brand-primary group-hover:scale-110 transition-transform">
-                            <span class="font-bold text-lg">3</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900">Local Storage</h3>
+                            class="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center text-brand-primary font-bold text-lg group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                            3</div>
+                        <h3 class="text-xl font-bold text-slate-900">Local Data Storage</h3>
                     </div>
-                    <p class="text-sm text-slate-600 font-light leading-relaxed pl-14 mb-4">
-                        All configuration and state data is stored locally in your user profile:
-                        <code class="font-mono text-xs bg-slate-200 px-1 rounded">%APPDATA%\SecureAttic</code>.
-                        The specific files we create and manage include:
+                    <p class="text-sm text-slate-600 font-medium leading-relaxed pl-14 mb-4">
+                        All configuration data is stored locally in your user profile:
+                        <code
+                            class="font-mono text-xs bg-slate-100 text-slate-800 px-2 py-1 rounded mx-1 border border-slate-200">%APPDATA%\SecureAttic</code>
                     </p>
-                    <ul class="space-y-2 pl-14 text-sm text-slate-600 font-mono">
-                        <li>• vault_targets.json (Protected paths)</li>
-                        <li>• usb_registry.json (Hardware mapping)</li>
-                        <li>• ms_d3d_info.bin (Encrypted validation token)</li>
-                        <li>• recovery_vault.bin (Local key backup)</li>
-                    </ul>
+                    <div class="pl-14">
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-100">
+                            <ul class="space-y-2 text-xs font-mono text-slate-600">
+                                <li class="flex items-center gap-2"><i data-lucide="file"
+                                        class="w-3 h-3 text-slate-400"></i> vault_targets.json (Protected paths)</li>
+                                <li class="flex items-center gap-2"><i data-lucide="file"
+                                        class="w-3 h-3 text-slate-400"></i> usb_registry.json (Hardware mapping)</li>
+                                <li class="flex items-center gap-2"><i data-lucide="file-lock"
+                                        class="w-3 h-3 text-brand-primary"></i> ms_d3d_info.bin (Encrypted validation
+                                    token)</li>
+                                <li class="flex items-center gap-2"><i data-lucide="file-lock"
+                                        class="w-3 h-3 text-brand-primary"></i> recovery_vault.bin (Local key backup)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 <div
-                    class="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:border-brand-primary/20 transition-all hover:shadow-lg hover:shadow-brand-primary/5 group">
+                    class="bg-white border border-slate-200 rounded-3xl p-8 hover:border-brand-primary/30 transition-all hover:shadow-xl hover:shadow-brand-primary/5 group">
                     <div class="flex items-center gap-4 mb-4">
                         <div
-                            class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm text-brand-primary group-hover:scale-110 transition-transform">
-                            <span class="font-bold text-lg">4</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900">Third-Party Processors</h3>
+                            class="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center text-brand-primary font-bold text-lg group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                            4</div>
+                        <h3 class="text-xl font-bold text-slate-900">Processors</h3>
                     </div>
-                    <p class="text-sm text-slate-600 font-light leading-relaxed pl-14 mb-4">
-                        We use a limited set of trusted third-party providers:
+                    <p class="text-sm text-slate-600 font-medium leading-relaxed pl-14 mb-4">
+                        We use a single trusted third-party provider:
                     </p>
                     <ul class="space-y-4 pl-14">
-                        <li class="text-sm text-slate-600 font-light leading-relaxed flex gap-3">
-                            <i data-lucide="arrow-right" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i>
-                            <span><strong>LemonSqueezy:</strong> Used for payment processing, tax compliance, and
-                                license key generation.</span>
+                        <li class="text-sm text-slate-600 flex gap-3">
+                            <i data-lucide="credit-card" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i>
+                            <span><strong>LemonSqueezy:</strong> Acts as our Merchant of Record. They handle all credit
+                                card processing, tax compliance, and invoicing. SecureAttic never sees or stores your
+                                financial information.</span>
                         </li>
                     </ul>
+                    <div class="pl-14 mt-4">
+                        <a href="https://www.lemonsqueezy.com/privacy" target="_blank"
+                            class="text-xs text-brand-primary font-bold hover:underline flex items-center gap-1">
+                            View LemonSqueezy Privacy Policy <i data-lucide="external-link" class="w-3 h-3"></i>
+                        </a>
+                    </div>
                 </div>
 
             </div>
 
-            <div class="mt-16 pt-12 border-t border-slate-100">
-                <div
-                    class="flex flex-col md:flex-row justify-between items-center gap-8 bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
-                    <div class="flex items-center gap-5">
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-brand-light flex items-center justify-center border border-brand-primary/10">
-                            <i data-lucide="file-text" class="w-6 h-6 text-brand-primary"></i>
-                        </div>
-                        <div>
-                            <p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-1">Privacy
-                                Policy</p>
-                            <span class="text-lg font-bold text-slate-900">SecureAttic Privacy PDF</span>
-                        </div>
-                    </div>
-                    <button onclick="window.print()"
-                        class="group flex items-center gap-3 px-6 py-3 bg-slate-50 rounded-xl text-xs font-bold uppercase tracking-wider text-slate-500 hover:bg-brand-primary hover:text-white transition-all">
-                        <i data-lucide="printer" class="w-4 h-4 group-hover:text-white transition-colors"></i>
-                        DOWNLOAD PDF
-                    </button>
-                </div>
+            <div class="mt-16 pt-12 border-t border-slate-100 text-center">
+                <button onclick="window.print()"
+                    class="inline-flex items-center gap-3 px-8 py-4 bg-white border-2 border-slate-100 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-500 hover:border-brand-primary hover:text-brand-primary transition-all">
+                    <i data-lucide="printer" class="w-4 h-4"></i>
+                    Print Policy
+                </button>
             </div>
 
         </div>
     </main>
 
-    <footer class="py-12 px-6 bg-white border-t border-slate-100">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex flex-col items-center md:items-start gap-3">
-                <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
-                    <img src="/static/logo.png" alt="Logo" class="h-6 w-auto grayscale">
-                    <span class="text-sm font-bold text-slate-700">SecureAttic</span>
-                </div>
-                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
-                    &copy; 2026 SecureAttic. Windows 10/11 Compatible.
-                </p>
+    <footer class="py-10 px-6 bg-white border-t border-slate-100">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+                <img src="logo.png" alt="Logo" class="h-5 w-auto grayscale">
+                <span class="text-xs font-bold text-slate-700">SecureAttic © 2026</span>
             </div>
 
-            <div
-                class="flex flex-wrap justify-center gap-6 md:gap-8 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                <a href="documentation.html" class="hover:text-brand-primary transition-colors">Documentation</a>
-                <a href="view-order.html" class="hover:text-brand-primary transition-colors">View Order</a>
-                <a href="contact.html" class="hover:text-brand-primary transition-colors">Contact</a>
-                <span class="text-slate-200 hidden md:inline">|</span>
-                <a href="privacy-policy.html" class="text-brand-primary transition-colors">Privacy</a>
-                <a href="terms-of-service.html" class="hover:text-brand-primary transition-colors">Terms</a>
-                <a href="cookie-policy.html" class="hover:text-brand-primary transition-colors">Cookies</a>
+            <div class="flex gap-6 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                <a href="terms-of-service.html" class="hover:text-brand-primary transition-colors">Terms of Service</a>
+                <span class="text-slate-200">|</span>
+                <a href="privacy-policy.html" class="text-brand-primary">Privacy Policy</a>
             </div>
         </div>
     </footer>

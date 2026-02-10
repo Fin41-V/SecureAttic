@@ -8,7 +8,7 @@
     <meta name="description"
         content="Technical documentation and user manual for SecureAttic. Learn about hardware binding, encryption standards, and recovery protocols.">
 
-    <link rel="icon" href="/static/logo.png" />
+    <link rel="icon" href="logo.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,7 +19,8 @@
                             primary: '#244997',   /* Matches index.html */
                             deep: '#1b3670',
                             light: '#f4f7ff',
-                            accent: '#4cc9f0'
+                            accent: '#4cc9f0',
+                            danger: '#ef4444'
                         }
                     },
                     fontFamily: {
@@ -43,13 +44,13 @@
         }
 
         .nav-blur {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .doc-section {
-            scroll-margin-top: 120px;
+            scroll-margin-top: 140px;
         }
 
         /* Custom Scrollbar for code blocks */
@@ -70,7 +71,7 @@
             color: #244997;
             border-left: 2px solid #244997;
             padding-left: 14px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .toc-link {
@@ -78,26 +79,34 @@
             border-left: 2px solid transparent;
             padding-left: 16px;
         }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
     </style>
 </head>
 
 <body class="antialiased selection:bg-brand-primary selection:text-white">
 
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-6 nav-blur">
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-4 nav-blur">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="/static/logo.png" alt="Secure Attic" class="h-8 w-auto object-contain">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="logo.png" alt="Secure Attic"
+                    class="h-8 w-auto object-contain group-hover:scale-105 transition-transform">
                 <span class="text-lg font-bold tracking-tight text-slate-900 hidden md:block">Secure<span
                         class="text-brand-primary">Attic</span></span>
             </a>
-            <div class="flex items-center gap-8">
-                <a href="index.html"
-                    class="text-[11px] font-semibold uppercase tracking-widest text-slate-500 hover:text-brand-primary transition-colors">Home</a>
-                <a href="contact.html"
-                    class="text-[11px] font-semibold uppercase tracking-widest text-slate-500 hover:text-brand-primary transition-colors">Contact</a>
-                <a href="https://checkout.secureattic.com/checkout/buy/53028f89-6860-449c-86e8-ca8d89a85684"
-                    class="bg-brand-primary text-white px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wide hover:bg-brand-deep transition-colors shadow-lg shadow-brand-primary/20">Get
-                    License</a>
+
+            <div class="flex items-center gap-6">
+                <button onclick="window.history.back()"
+                    class="text-[11px] font-bold uppercase tracking-widest text-slate-400 hover:text-brand-primary transition-colors flex items-center gap-2">
+                    <i data-lucide="arrow-left" class="w-3 h-3"></i> Back
+                </button>
+
+                <a href="https://checkout.secureattic.com"
+                    class="bg-brand-primary text-white px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wide hover:bg-brand-deep transition-colors shadow-lg shadow-brand-primary/20">
+                    Get License
+                </a>
             </div>
         </div>
     </nav>
@@ -109,7 +118,8 @@
                 <div>
                     <h4
                         class="text-[10px] font-bold text-slate-900 uppercase tracking-widest mb-6 border-b border-slate-100 pb-2">
-                        Foundations</h4>
+                        Foundations
+                    </h4>
                     <ul class="space-y-3 text-sm font-medium text-slate-500">
                         <li><a href="#introduction" class="toc-link hover:text-brand-primary block">Core Philosophy</a>
                         </li>
@@ -122,19 +132,21 @@
                 <div>
                     <h4
                         class="text-[10px] font-bold text-slate-900 uppercase tracking-widest mb-6 border-b border-slate-100 pb-2">
-                        Technical Specs</h4>
+                        Technical Specs
+                    </h4>
                     <ul class="space-y-3 text-sm font-medium text-slate-500">
                         <li><a href="#encryption" class="toc-link hover:text-brand-primary block">Encryption
                                 Standards</a></li>
-                        <li><a href="#hardware-uid" class="toc-link hover:text-brand-primary block">Volume
-                                Binding</a></li>
+                        <li><a href="#hardware-uid" class="toc-link hover:text-brand-primary block">Volume Binding</a>
+                        </li>
                         <li><a href="#runtime" class="toc-link hover:text-brand-primary block">Runtime Security</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4
                         class="text-[10px] font-bold text-slate-900 uppercase tracking-widest mb-6 border-b border-slate-100 pb-2">
-                        Support</h4>
+                        Support
+                    </h4>
                     <ul class="space-y-3 text-sm font-medium text-slate-500">
                         <li><a href="#troubleshooting"
                                 class="toc-link hover:text-brand-primary block">Troubleshooting</a></li>
@@ -150,12 +162,12 @@
                 <div class="flex items-center gap-3 mb-6">
                     <span
                         class="px-3 py-1 bg-brand-light text-[10px] font-bold text-brand-primary rounded-full uppercase tracking-wider border border-brand-primary/10">v3.0.0-Titan</span>
-                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Updated Oct 2026</span>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Updated Feb 2026</span>
                 </div>
-                <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
                     Technical <span class="text-brand-primary">Manual</span>
                 </h1>
-                <p class="text-lg text-slate-500 font-light leading-relaxed">
+                <p class="text-lg text-slate-500 font-medium leading-relaxed">
                     A deep dive into the SecureAttic environment—from hardware binding via volume serial hashing to the
                     custom atomic vault protocols that protect your data.
                 </p>
@@ -163,7 +175,7 @@
 
             <section id="introduction" class="doc-section mb-20">
                 <h2 class="text-2xl font-bold text-slate-900 mb-6">Core Philosophy</h2>
-                <div class="prose prose-slate leading-relaxed text-slate-600 font-light space-y-6">
+                <div class="prose prose-slate leading-relaxed text-slate-600 font-medium space-y-6">
                     <p>
                         SecureAttic was developed to solve the "Master Password" dilemma. In traditional encryption,
                         your security is only as strong as your ability to remember a complex string. However, passwords
@@ -179,21 +191,20 @@
                         and
                         binding it to that specific drive's hardware serial number, we create a multi-factor environment
                         where
-                        unauthorized access requires physical theft of your specific hardware, not just a cloned copy of
-                        the files.
+                        unauthorized access requires physical theft of your specific hardware.
                     </p>
                 </div>
             </section>
 
             <section id="setup" class="doc-section mb-20">
                 <h2 class="text-2xl font-bold text-slate-900 mb-8">Installation & Setup</h2>
-                <p class="text-slate-600 font-light mb-8 leading-relaxed">
+                <p class="text-slate-600 font-medium mb-8 leading-relaxed">
                     SecureAttic operates as a portable executable with "Zero-Trace" design principles. It utilizes
                     user-mode AppData storage to avoid requiring administrative privileges.
                 </p>
 
                 <div class="space-y-4">
-                    <div class="flex gap-6 p-6 rounded-2xl border border-slate-100 bg-white">
+                    <div class="flex gap-6 p-6 rounded-2xl border border-slate-100 bg-white shadow-sm">
                         <div class="flex flex-col items-center gap-1 shrink-0">
                             <span class="text-xs font-bold text-brand-primary uppercase tracking-wider">Step</span>
                             <span class="text-2xl font-bold text-slate-900">01</span>
@@ -209,7 +220,7 @@
                         </div>
                     </div>
 
-                    <div class="flex gap-6 p-6 rounded-2xl border border-slate-100 bg-white">
+                    <div class="flex gap-6 p-6 rounded-2xl border border-slate-100 bg-white shadow-sm">
                         <div class="flex flex-col items-center gap-1 shrink-0">
                             <span class="text-xs font-bold text-brand-primary uppercase tracking-wider">Step</span>
                             <span class="text-2xl font-bold text-slate-900">02</span>
@@ -226,7 +237,7 @@
                         </div>
                     </div>
 
-                    <div class="flex gap-6 p-6 rounded-2xl border border-slate-100 bg-white">
+                    <div class="flex gap-6 p-6 rounded-2xl border border-slate-100 bg-white shadow-sm">
                         <div class="flex flex-col items-center gap-1 shrink-0">
                             <span class="text-xs font-bold text-brand-primary uppercase tracking-wider">Step</span>
                             <span class="text-2xl font-bold text-slate-900">03</span>
@@ -235,10 +246,9 @@
                             <h4 class="font-bold text-slate-900 mb-2 text-sm uppercase tracking-wider">Seed Generation
                             </h4>
                             <p class="text-sm text-slate-500 leading-relaxed">We generate a BIP-39 mnemonic
-                                phrase (English dictionary). <strong class="text-red-500">Write this down.</strong> This
-                                allows
-                                key recovery if your hardware token is lost or destroyed, bypassing the hardware binding
-                                check.</p>
+                                phrase (English dictionary). <strong class="text-red-600 bg-red-50 px-1 rounded">Write
+                                    this down.</strong> This
+                                allows key recovery if your hardware token is lost or destroyed.</p>
                         </div>
                     </div>
                 </div>
@@ -246,7 +256,7 @@
 
             <section id="architecture" class="doc-section mb-20">
                 <h2 class="text-2xl font-bold text-slate-900 mb-8">System Architecture</h2>
-                <p class="text-slate-600 font-light mb-8 leading-relaxed">
+                <p class="text-slate-600 font-medium mb-8 leading-relaxed">
                     The SecureAttic engine operates at the user-mode level, utilizing the Python standard library
                     and `pywebview` for a lightweight UI.
                 </p>
@@ -265,8 +275,8 @@
                                 Files are protected via atomic operations. When locked, data is encrypted and renamed
                                 with a
                                 <code class="font-mono text-xs">.vault</code> extension. A JSON header containing the
-                                original filename and timestamp
-                                is injected before the ciphertext to ensure perfect restoration.
+                                original filename and timestamp is injected before the ciphertext to ensure perfect
+                                restoration.
                             </p>
                         </div>
                     </div>
@@ -292,7 +302,7 @@
 
             <section id="encryption" class="doc-section mb-20">
                 <h2 class="text-2xl font-bold text-slate-900 mb-8">Encryption Standards</h2>
-                <p class="text-slate-600 font-light mb-8">
+                <p class="text-slate-600 font-medium mb-8">
                     Every file within your Attic is encrypted using the <strong>Fernet</strong> symmetric encryption
                     implementation. This guarantees that data cannot be read or modified without the key.
                 </p>
@@ -349,15 +359,14 @@ shutil.move(temp_path, final_path) <span class="text-slate-500"># Renames to .va
 
             <section id="hardware-uid" class="doc-section mb-20">
                 <h2 class="text-2xl font-bold text-slate-900 mb-8">Volume Binding</h2>
-                <p class="text-slate-600 font-light mb-8 leading-relaxed">
+                <p class="text-slate-600 font-medium mb-8 leading-relaxed">
                     SecureAttic implements robust hardware binding to prevent key cloning. A simple copy of the key file
                     to another USB drive will not work.
                 </p>
 
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                        <h4 class="font-bold text-slate-900 mb-3 text-sm uppercase tracking-wider">
-                            Serial Hashing</h4>
+                        <h4 class="font-bold text-slate-900 mb-3 text-sm uppercase tracking-wider">Serial Hashing</h4>
                         <p class="text-sm text-slate-500 leading-relaxed">
                             The key file contains a payload in the format <code
                                 class="font-mono text-xs">KEY_BYTES::SERIAL_HASH</code>.
@@ -367,12 +376,11 @@ shutil.move(temp_path, final_path) <span class="text-slate-500"># Renames to .va
                         </p>
                     </div>
                     <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                        <h4 class="font-bold text-slate-900 mb-3 text-sm uppercase tracking-wider">Token Files
-                        </h4>
+                        <h4 class="font-bold text-slate-900 mb-3 text-sm uppercase tracking-wider">Token Files</h4>
                         <p class="text-sm text-slate-500 leading-relaxed">
                             The system scans for <code class="font-mono text-xs">IndexerVolumeGuid</code> (Master) and
                             <code class="font-mono text-xs">SysRecovery.dat</code> (Backup). These files are
-                            often hidden using System+Hidden attributes.
+                            often hidden using System+Hidden attributes to prevent accidental deletion.
                         </p>
                     </div>
                 </div>
@@ -388,7 +396,7 @@ shutil.move(temp_path, final_path) <span class="text-slate-500"># Renames to .va
                         <h3 class="text-lg font-bold text-slate-900">The "Sentry" Loop</h3>
                     </div>
 
-                    <p class="text-slate-600 font-light leading-relaxed mb-6">
+                    <p class="text-slate-600 font-medium leading-relaxed mb-6">
                         The application spawns a background daemon thread known as the "Sentry" (<code
                             class="font-mono text-xs">sentry_loop</code>).
                         This thread operates independently of the main UI and polls the hardware bus state every
@@ -402,8 +410,8 @@ shutil.move(temp_path, final_path) <span class="text-slate-500"># Renames to .va
                                 <h4 class="text-sm font-bold text-slate-900">Auto-Lock Timer</h4>
                                 <p class="text-xs text-slate-500 mt-1">
                                     If unlocked for more than <strong>15 minutes</strong> (900s), the Sentry
-                                    automatically re-encrypts all data,
-                                    clears the clipboard, and purges the key from RAM.
+                                    automatically re-encrypts all data, clears the clipboard, and purges the key from
+                                    RAM.
                                 </p>
                             </div>
                         </li>
@@ -414,17 +422,6 @@ shutil.move(temp_path, final_path) <span class="text-slate-500"># Renames to .va
                                 <p class="text-xs text-slate-500 mt-1">If the valid USB signature vanishes (drive
                                     pulled), the
                                     Sentry triggers the lockdown sequence immediately.</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4 items-start">
-                            <i data-lucide="check-circle" class="w-5 h-5 text-brand-primary mt-0.5 shrink-0"></i>
-                            <div>
-                                <h4 class="text-sm font-bold text-slate-900">Duress Mode</h4>
-                                <p class="text-xs text-slate-500 mt-1">
-                                    Entering specific "Panic Codes" (e.g. 9999) activates a fake interface state,
-                                    populating the UI
-                                    with dummy data while keeping real vaults encrypted.
-                                </p>
                             </div>
                         </li>
                     </ul>
@@ -442,9 +439,9 @@ shutil.move(temp_path, final_path) <span class="text-slate-500"># Renames to .va
                                 class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
                         </summary>
                         <div
-                            class="px-6 pb-6 text-sm text-slate-500 font-light leading-relaxed border-t border-slate-50 pt-4">
-                            This can happen if you copied the key file to a new drive. SecureAttic binds to the hardware
-                            serial.
+                            class="px-6 pb-6 text-sm text-slate-500 font-medium leading-relaxed border-t border-slate-50 pt-4">
+                            This can happen if you copied the key file to a new drive manually. SecureAttic binds to the
+                            hardware serial.
                             You must use your <strong>Recovery Seed Phrase</strong> to regenerate a new key for the new
                             drive.
                         </div>
@@ -458,7 +455,7 @@ shutil.move(temp_path, final_path) <span class="text-slate-500"># Renames to .va
                                 class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
                         </summary>
                         <div
-                            class="px-6 pb-6 text-sm text-slate-500 font-light leading-relaxed border-t border-slate-50 pt-4">
+                            class="px-6 pb-6 text-sm text-slate-500 font-medium leading-relaxed border-t border-slate-50 pt-4">
                             Files cannot be locked if they are open in another application. Ensure Word, Excel, or Photo
                             viewers
                             are closed before removing your key.
@@ -473,7 +470,7 @@ shutil.move(temp_path, final_path) <span class="text-slate-500"># Renames to .va
                                 class="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform"></i>
                         </summary>
                         <div
-                            class="px-6 pb-6 text-sm text-slate-500 font-light leading-relaxed border-t border-slate-50 pt-4">
+                            class="px-6 pb-6 text-sm text-slate-500 font-medium leading-relaxed border-t border-slate-50 pt-4">
                             Because SecureAttic encrypts files rapidly, heuristics may flag it. We use the <code
                                 class="font-mono text-xs">.vault</code>
                             extension to signal legitimate activity. Add the application folder to your AV exclusions if
@@ -489,17 +486,17 @@ shutil.move(temp_path, final_path) <span class="text-slate-500"># Renames to .va
                     <div class="bg-slate-50 p-6 rounded-2xl">
                         <h4 class="font-bold text-slate-900 mb-3 text-xs uppercase tracking-widest text-brand-primary">
                             Does SecureAttic work on Mac/Linux?</h4>
-                        <p class="text-sm text-slate-500 font-light leading-relaxed">
+                        <p class="text-sm text-slate-500 font-medium leading-relaxed">
                             Basic support exists. The code includes logic for macOS <code
                                 class="font-mono text-xs">/Volumes</code>
-                            scanning and Linux <code class="font-mono text-xs">/media</code> monitoring, as well as
-                            <code class="font-mono text-xs">chflags hidden</code> support for Mac.
+                            scanning and Linux <code class="font-mono text-xs">/media</code> monitoring. However,
+                            official support is Windows 10/11 only.
                         </p>
                     </div>
                     <div class="bg-slate-50 p-6 rounded-2xl">
                         <h4 class="font-bold text-slate-900 mb-3 text-xs uppercase tracking-widest text-brand-primary">
                             Where is my config stored?</h4>
-                        <p class="text-sm text-slate-500 font-light leading-relaxed">
+                        <p class="text-sm text-slate-500 font-medium leading-relaxed">
                             Configuration is stored in <code class="font-mono text-xs">%APPDATA%/SecureAttic</code>.
                             This includes <code class="font-mono text-xs">vault_targets.json</code> and the encrypted
                             local verification file.
@@ -508,7 +505,8 @@ shutil.move(temp_path, final_path) <span class="text-slate-500"># Renames to .va
                     <div class="bg-slate-50 p-6 rounded-2xl">
                         <h4 class="font-bold text-slate-900 mb-3 text-xs uppercase tracking-widest text-brand-primary">
                             Are my files stored on the USB?</h4>
-                        <p class="text-sm text-slate-500 font-light leading-relaxed">No. Your files stay on your PC. The
+                        <p class="text-sm text-slate-500 font-medium leading-relaxed">No. Your files stay on your PC.
+                            The
                             USB drive only acts as the "physical key" to unlock them.</p>
                     </div>
                 </div>
@@ -543,7 +541,7 @@ shutil.move(temp_path, final_path) <span class="text-slate-500"># Renames to .va
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="flex flex-col items-center md:items-start gap-3">
                 <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
-                    <img src="/static/logo.png" alt="Logo" class="h-6 w-auto grayscale">
+                    <img src="logo.png" alt="Logo" class="h-6 w-auto grayscale">
                     <span class="text-sm font-bold text-slate-700">SecureAttic</span>
                 </div>
                 <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
@@ -554,8 +552,6 @@ shutil.move(temp_path, final_path) <span class="text-slate-500"># Renames to .va
             <div
                 class="flex flex-wrap justify-center gap-6 md:gap-8 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
                 <a href="documentation.html" class="text-brand-primary transition-colors">Documentation</a>
-                <a href="view-order.html" class="hover:text-brand-primary transition-colors">View Order</a>
-                <a href="contact.html" class="hover:text-brand-primary transition-colors">Contact</a>
                 <span class="text-slate-200 hidden md:inline">|</span>
                 <a href="privacy-policy.html" class="hover:text-brand-primary transition-colors">Privacy</a>
                 <a href="terms-of-service.html" class="hover:text-brand-primary transition-colors">Terms</a>
@@ -567,7 +563,7 @@ shutil.move(temp_path, final_path) <span class="text-slate-500"># Renames to .va
     <script>
         lucide.createIcons();
 
-        // Simple scroll spy for sidebar
+        // Scroll Spy for TOC
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('.doc-section');
             const navLinks = document.querySelectorAll('.toc-link');
@@ -575,7 +571,7 @@ shutil.move(temp_path, final_path) <span class="text-slate-500"># Renames to .va
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (window.pageYOffset >= sectionTop - 150) {
+                if (window.pageYOffset >= sectionTop - 180) {
                     current = section.getAttribute('id');
                 }
             });

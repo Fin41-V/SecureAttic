@@ -8,7 +8,7 @@
     <meta name="description"
         content="Contact SecureAttic support. Direct line to the developer for technical assistance and license inquiries.">
 
-    <link rel="icon" href="/static/logo.png" />
+    <link rel="icon" href="logo.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,7 +19,8 @@
                             primary: '#244997',   /* Matches index.html */
                             deep: '#1b3670',
                             light: '#f4f7ff',
-                            accent: '#4cc9f0'
+                            accent: '#4cc9f0',
+                            danger: '#ef4444'
                         }
                     },
                     fontFamily: {
@@ -43,61 +44,61 @@
         }
 
         .nav-blur {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         /* Custom Input Autofill Style */
         input:-webkit-autofill,
-        input:-webkit-autofill:hover,
-        input:-webkit-autofill:focus,
         textarea:-webkit-autofill,
-        textarea:-webkit-autofill:hover,
-        textarea:-webkit-autofill:focus,
-        select:-webkit-autofill,
-        select:-webkit-autofill:hover,
-        select:-webkit-autofill:focus {
+        select:-webkit-autofill {
             -webkit-box-shadow: 0 0 0px 1000px #F8FAFC inset;
             transition: background-color 5000s ease-in-out 0s;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
     </style>
 </head>
 
 <body class="antialiased selection:bg-brand-primary selection:text-white">
 
-    <!-- NAVIGATION (Matches Index) -->
-    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-6 nav-blur">
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-4 nav-blur">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="/static/logo.png" alt="Secure Attic" class="h-8 w-auto object-contain">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="logo.png" alt="Secure Attic"
+                    class="h-8 w-auto object-contain group-hover:scale-105 transition-transform">
                 <span class="text-lg font-bold tracking-tight text-slate-900 hidden md:block">Secure<span
                         class="text-brand-primary">Attic</span></span>
             </a>
-            <div class="flex items-center gap-8">
-                <a href="index.html"
-                    class="text-[11px] font-semibold uppercase tracking-widest text-slate-500 hover:text-brand-primary transition-colors">Home</a>
-                <a href="contact.html"
-                    class="text-[11px] font-semibold uppercase tracking-widest text-brand-primary transition-colors">Contact</a>
-                <a href="https://checkout.secureattic.com/checkout"
-                    class="bg-brand-primary text-white px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wide hover:bg-brand-deep transition-colors shadow-lg shadow-brand-primary/20">Get
-                    License</a>
+
+            <div class="flex items-center gap-6">
+                <button onclick="window.history.back()"
+                    class="text-[11px] font-bold uppercase tracking-widest text-slate-400 hover:text-brand-primary transition-colors flex items-center gap-2">
+                    <i data-lucide="arrow-left" class="w-3 h-3"></i> Back
+                </button>
+
+                <a href="https://checkout.secureattic.com/checkout/buy/53028f89-6860-449c-86e8-ca8d89a85684"
+                    class="bg-brand-primary text-white px-5 py-2 rounded-lg text-xs font-bold uppercase tracking-wide hover:bg-brand-deep transition-colors shadow-lg shadow-brand-primary/20">
+                    Get License
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- HEADER -->
-    <header class="pt-40 pb-16 px-6 bg-white">
+    <header class="pt-32 pb-16 px-6 bg-white">
         <div class="max-w-3xl mx-auto">
             <div
                 class="inline-flex items-center gap-2 px-3 py-1 bg-brand-light text-[10px] font-bold text-brand-primary rounded-full uppercase tracking-wider border border-brand-primary/10 mb-6">
                 <i data-lucide="message-circle" class="w-3 h-3"></i>
                 Developer Support
             </div>
-            <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 mb-6">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-6">
                 Get in <span class="text-brand-primary">Touch.</span>
             </h1>
-            <p class="text-lg text-slate-500 font-light leading-relaxed max-w-2xl">
+            <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-2xl">
                 SecureAttic is an independent project. If you have a technical issue, a question about your license, or
                 just want to chat about the architecture, reach out directly. I usually get back to everyone within 24
                 hours.
@@ -105,16 +106,13 @@
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main class="pb-32 px-6">
         <div class="max-w-5xl mx-auto grid md:grid-cols-5 gap-12">
 
-            <!-- Left Column: Info Cards -->
             <div class="md:col-span-2 space-y-6">
                 <h4 class="text-[10px] font-bold text-brand-primary uppercase tracking-widest mb-2 px-1">Direct Line
                 </h4>
 
-                <!-- Email Card -->
                 <a href="mailto:noahjohncraigkerr@proton.me"
                     class="flex items-start gap-4 p-6 bg-white border border-slate-100 rounded-3xl hover:border-brand-primary/30 hover:shadow-lg hover:shadow-brand-primary/5 transition-all group">
                     <div
@@ -129,7 +127,6 @@
                     </div>
                 </a>
 
-                <!-- Timezone Card -->
                 <div class="flex items-start gap-4 p-6 bg-white border border-slate-100 rounded-3xl">
                     <div class="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center text-slate-400">
                         <i data-lucide="clock" class="w-5 h-5"></i>
@@ -141,7 +138,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Link -->
                 <a href="documentation.html#faq"
                     class="flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-brand-primary transition-colors px-2">
                     <i data-lucide="help-circle" class="w-4 h-4"></i>
@@ -149,7 +145,6 @@
                 </a>
             </div>
 
-            <!-- Right Column: Form -->
             <div class="md:col-span-3">
                 <div
                     class="bg-white border border-slate-100 rounded-[2.5rem] p-8 md:p-12 shadow-xl shadow-slate-200/50">
@@ -160,15 +155,22 @@
                                 <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-1">Your
                                     Name</label>
                                 <input type="text" name="name" placeholder="Jane Doe" required
-                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all">
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all">
                             </div>
                             <div class="space-y-2">
                                 <label
                                     class="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-1">License
                                     ID (Optional)</label>
                                 <input type="text" name="license" placeholder="SA-XXXX-XXXX"
-                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all">
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all">
                             </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-1">Your
+                                Email</label>
+                            <input type="email" name="email" placeholder="you@example.com" required
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all">
                         </div>
 
                         <div class="space-y-2">
@@ -176,7 +178,7 @@
                                 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-1">Topic</label>
                             <div class="relative">
                                 <select name="subject"
-                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium text-slate-900 focus:outline-none focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 appearance-none transition-all cursor-pointer">
+                                    class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-bold text-slate-900 focus:outline-none focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 appearance-none transition-all cursor-pointer">
                                     <option>I'm having a technical issue</option>
                                     <option>Problem with my license</option>
                                     <option>Billing / Refund help</option>
@@ -210,12 +212,11 @@
         </div>
     </main>
 
-    <!-- FOOTER (Matches Index) -->
     <footer class="py-12 px-6 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="flex flex-col items-center md:items-start gap-3">
                 <div class="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
-                    <img src="/static/logo.png" alt="Logo" class="h-6 w-auto grayscale">
+                    <img src="logo.png" alt="Logo" class="h-6 w-auto grayscale">
                     <span class="text-sm font-bold text-slate-700">SecureAttic</span>
                 </div>
                 <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
